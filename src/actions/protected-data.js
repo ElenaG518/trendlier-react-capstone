@@ -19,22 +19,22 @@ export const getCategory = category => ({
     category
 });
 
-export const fetchProtectedData = () => (dispatch, getState) => {
-    const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/protected`, {
-        method: 'GET',
-        headers: {
-            // Provide our auth token as credentials
-            Authorization: `Bearer ${authToken}`
-        }
-    })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
-        .catch(err => {
-            dispatch(fetchProtectedDataError(err));
-        });
-};
+// export const fetchProtectedData = () => (dispatch, getState) => {
+//     const authToken = getState().auth.authToken;
+//     return fetch(`${API_BASE_URL}/protected`, {
+//         method: 'GET',
+//         headers: {
+//             // Provide our auth token as credentials
+//             Authorization: `Bearer ${authToken}`
+//         }
+//     })
+//         .then(res => normalizeResponseErrors(res))
+//         .then(res => res.json())
+//         .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
+//         .catch(err => {
+//             dispatch(fetchProtectedDataError(err));
+//         });
+// };
 
 export const categorySearch = category => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
