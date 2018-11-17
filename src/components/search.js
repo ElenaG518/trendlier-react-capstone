@@ -4,7 +4,7 @@ import { Redirect} from 'react-router-dom';
 
 import  SearchForm  from './search-form';
 
-export function Search(props) {
+export function SearchPage(props) {
     // If we are logged in (which happens automatically when registration
     // is successful) redirect to the user's dashboard
     if (!props.loggedIn) {
@@ -23,4 +23,4 @@ const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
 
-export default connect(mapStateToProps)(Search);
+export default connect(mapStateToProps)(SearchPage);
