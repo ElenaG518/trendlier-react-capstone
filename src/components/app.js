@@ -5,7 +5,7 @@ import {Route, withRouter} from 'react-router-dom';
 import LandingPage from './landing-page';
 import HeaderBar from './header-bar';
 import  LoginForm  from './login-form';
-// import  RegistrationForm  from './registration-form';
+import  RegistrationForm  from './registration-form';
 // import TopNav from './topnav';
 // import SearchPage from './search';
 // import Footer from './footer'
@@ -25,6 +25,8 @@ export class App extends Component {
             this.stopPeriodicRefresh();
         }
     }
+
+    
 
     componentWillUnmount() {
         this.stopPeriodicRefresh();
@@ -51,8 +53,8 @@ export class App extends Component {
                     <HeaderBar />
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/auth/login" component={LoginForm} />
-                    {/* <Route exact path="/auth/signup" component={RegistrationForm} />
-                    <Route path="/in/" component={TopNav}/>
+                    <Route exact path="/auth/signup" component={RegistrationForm} />
+                    {/* <Route path="/in/" component={TopNav}/>
                     <Route exact path="/in/search-page" component={SearchPage}/>
                     <Footer /> */}
                 </div>

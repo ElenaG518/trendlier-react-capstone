@@ -49,6 +49,7 @@ export const login = (username, password) => dispatch => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
+                
             },
             body: JSON.stringify({
                 username,

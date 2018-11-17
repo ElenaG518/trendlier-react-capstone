@@ -1,8 +1,8 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import { Link } from "react-router-dom";
-import {registerUser} from '../actions';
-import {login} from '../actions';
+import {registerUser} from '../actions/users';
+import {login} from '../actions/auth';
 import Input from './input';
 import {required, nonEmpty, matches, length, isTrimmed} from '../validators';
 const passwordLength = length({min: 4, max: 72});
@@ -28,14 +28,15 @@ export class RegistrationForm extends React.Component {
                 <fieldset>
                     <legend>Sign Up</legend>
                 <label htmlFor="firstName">First name</label>
-                <Field component={Input} type="text" name="firstName" />
+                <Field component={Input} type="text" name="firstName"  placeholder="First name" />
                 <label htmlFor="lastName">Last name</label>
-                <Field component={Input} type="text" name="lastName" />
+                <Field component={Input} type="text" name="lastName" placeholder="Last name"/>
                 <label htmlFor="username">Username</label>
                 <Field
                     component={Input}
                     type="text"
                     name="username"
+                    placeholder="username"
                     validate={[required, nonEmpty, isTrimmed]}
                 />
                 <label htmlFor="password">Password</label>
@@ -43,23 +44,25 @@ export class RegistrationForm extends React.Component {
                     component={Input}
                     type="password"
                     name="password"
+                    placeholder="password"
                     validate={[required, passwordLength, isTrimmed]}
                 />
                 <label htmlFor="passwordConfirm">Confirm password</label>
                 <Field
                     component={Input}
                     type="password"
+                    placeholder="confirm password"
                     name="passwordConfirm"
                     validate={[required, nonEmpty, matchesPassword]}
                 />
                 <button
-                    type="submit"
+                    type="submit" id="signUpButton"
                     disabled={this.props.pristine || this.props.submitting}>
                     Register
                 </button>
                 </fieldset>
             </form>
-            <Link to="/login">Sign up</Link>
+            <Link to="/auth/login">Sign in</Link>
             </section>
         );
     }

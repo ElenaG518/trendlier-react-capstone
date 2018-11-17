@@ -1,7 +1,6 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
-
 import {login} from '../actions/auth';
 import {required, nonEmpty} from '../validators';
 import { Link, Redirect } from "react-router-dom";
@@ -24,7 +23,7 @@ export class LoginForm extends React.Component {
         };
 
         if (this.props.loggedIn) {
-            return <Redirect to="/dashboard/search" />;
+            return <Redirect to="/in/search-page" />;
         };
 
         return (
@@ -42,6 +41,8 @@ export class LoginForm extends React.Component {
                     component={Input}
                     type="text"
                     name="username"
+                    placeholder="username"
+                    
                     id="username"
                     validate={[required, nonEmpty]}
                 />
@@ -50,15 +51,18 @@ export class LoginForm extends React.Component {
                     component={Input}
                     type="password"
                     name="password"
+                    placeholder="password"
+                    
                     id="password"
                     validate={[required, nonEmpty]}
                 />
-                <button disabled={this.props.pristine || this.props.submitting}>
+                <button id="login-button" disabled={this.props.pristine || this.props.submitting}>
                     Log in
                 </button>
                 </fieldset>
             </form>
-            <Link to="/register">Sign up</Link>
+            <Link to="/auth/signup" className="signup-anchor">Sign up</Link>
+            {/* <Link to="/register" className="signup-anchor">Sign up</Link> */}
             </section>
         );
     }
