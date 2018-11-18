@@ -6,8 +6,9 @@ import LandingPage from './landing-page';
 import HeaderBar from './header-bar';
 import  LoginForm  from './login-form';
 import  RegistrationForm  from './registration-form';
-// import TopNav from './topnav';
-// import SearchPage from './search';
+import RegistrationPage from './registration-page';
+import Dashboard from './dashboard';
+
 // import Footer from './footer'
 
 import {refreshAuthToken} from '../actions/auth';
@@ -52,8 +53,10 @@ export class App extends Component {
                 <div className="app">
                     <HeaderBar />
                     <Route exact path="/" component={LandingPage} />
+                    <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/auth/login" component={LoginForm} />
                     <Route exact path="/auth/signup" component={RegistrationForm} />
+                    <Route exact path="/register" component={RegistrationPage} />
                     {/* <Route path="/in/" component={TopNav}/>
                     <Route exact path="/in/search-page" component={SearchPage}/>
                     <Footer /> */}
