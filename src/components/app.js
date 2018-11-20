@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
-import {Route, withRouter} from 'react-router-dom';
+import {Route, withRouter, Switch} from 'react-router-dom';
 
 import LandingPage from './landing-page';
 import HeaderBar from './header-bar';
@@ -8,6 +8,7 @@ import  LoginForm  from './login-form';
 import  RegistrationForm  from './registration-form';
 import RegistrationPage from './registration-page';
 import Dashboard from './dashboard';
+import  SearchPage  from './search-page';
 
 // import Footer from './footer'
 
@@ -26,9 +27,7 @@ export class App extends Component {
             this.stopPeriodicRefresh();
         }
     }
-
-    
-
+ 
     componentWillUnmount() {
         this.stopPeriodicRefresh();
     }
@@ -52,14 +51,15 @@ export class App extends Component {
            
                 <div className="app">
                     <HeaderBar />
+                    <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/dashboard" component={Dashboard} />
                     <Route exact path="/auth/login" component={LoginForm} />
                     <Route exact path="/auth/signup" component={RegistrationForm} />
                     <Route exact path="/register" component={RegistrationPage} />
-                    {/* <Route path="/in/" component={TopNav}/>
-                    <Route exact path="/in/search-page" component={SearchPage}/>
-                    <Footer /> */}
+                    <Route exact path="/dashboard/search-page" component={SearchPage}/>
+                    {/* <Footer /> */}
+                    </Switch>
                 </div>
               
             

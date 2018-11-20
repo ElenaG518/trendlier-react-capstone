@@ -9,7 +9,9 @@ import { Link, Redirect } from "react-router-dom";
 export class LoginForm extends React.Component {
     
     onSubmit(values) {
-        return this.props.dispatch(login(values.username, values.password));
+        return this.props
+        .dispatch(login(values.username, values.password))
+        .then(() => this.props.history.push(`/dashboard/search-page`));
     }
 
     render() {
@@ -22,10 +24,7 @@ export class LoginForm extends React.Component {
             );
         };
 
-        if (this.props.loggedIn) {
-            return <Redirect to="/in/search-page" />;
-        };
-
+        
         return (
             <section className="login">
             <form
@@ -62,7 +61,7 @@ export class LoginForm extends React.Component {
                 </fieldset>
             </form>
             <Link to="/auth/signup" className="signup-anchor">Sign up</Link>
-            {/* <Link to="/register" className="signup-anchor">Sign up</Link> */}
+            
             </section>
         );
     }

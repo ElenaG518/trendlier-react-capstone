@@ -14,12 +14,13 @@ export class RegistrationForm extends React.Component {
         const user = {username, password, firstName, lastName};
         return this.props
             .dispatch(registerUser(user))
-            .then(() => this.props.dispatch(login(username, password)));
+            .then(() => this.props.dispatch(login(username, password)))
+            .then(() => this.props.history.push(`/dashboard/search-page`));
     }
 
     render() {
         if (this.props.loggedIn) {
-            return <Redirect to="/in/search-page" />;
+            return <Redirect to="/dashboard/search-page" />;
         };
 
         return (

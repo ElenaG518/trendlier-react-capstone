@@ -7,7 +7,7 @@ import { Link, Redirect} from 'react-router-dom';
 export function LandingPage(props)  {
     // If we are logged in redirect straight to the user's search page
     if (props.loggedIn) {
-        return <Redirect to="/in/search-page" />;
+        return <Redirect to="/dashboard/search-page" />;
     }
 
     return (
