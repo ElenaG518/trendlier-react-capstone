@@ -13,33 +13,11 @@ export const fetchProtectedDataError = error => ({
     error
 });
 
-export const GET_CATEGORY = 'GET_CATEGORY';
-export const getCategory = category => ({
-    type: GET_CATEGORY,
-    category
-});
+
 
 export const fetchProtectedData = () => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/dashboard`, {
-        method: 'GET',
-        headers: {
-            // Provide our auth token as credentials
-            Authorization: `Bearer ${authToken}`
-        }
-    })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then(({data}) => dispatch(fetchProtectedDataSuccess(data)))
-        .catch(err => {
-            dispatch(fetchProtectedDataError(err));
-        });
-};
-
-export const categorySearch = category => (dispatch, getState) => {
-    const authToken = getState().auth.authToken;
-
-    return fetch(`${API_BASE_URL}/bestbuy/${category}`, {
         method: 'GET',
         headers: {
             // Provide our auth token as credentials

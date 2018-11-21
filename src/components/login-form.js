@@ -3,7 +3,7 @@ import {Field, reduxForm, focus} from 'redux-form';
 import Input from './input';
 import {login} from '../actions/auth';
 import {required, nonEmpty} from '../validators';
-import { Link, Redirect } from "react-router-dom";
+import { Link} from 'react-router-dom';
 
 
 export class LoginForm extends React.Component {
@@ -11,7 +11,7 @@ export class LoginForm extends React.Component {
     onSubmit(values) {
         return this.props
         .dispatch(login(values.username, values.password))
-        .then(() => this.props.history.push(`/dashboard/search-page`));
+        .then(() => this.props.history.push(`/search-page`));
     }
 
     render() {

@@ -22,7 +22,6 @@ export default class Select extends React.Component {
 
         return (
             <div className="form-input">
-                                
                 <label htmlFor={this.props.input.name}>
                     {this.props.label}
                     {error}
@@ -33,7 +32,8 @@ export default class Select extends React.Component {
                     id={this.props.input.name}
                     type={this.props.type}
                     placeholder={this.props.placeholder}
-                    ref={input => (this.input = input)}
+                    ref={option => (this.option = option)}
+
                 />
             </div>
            

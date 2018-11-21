@@ -28,8 +28,8 @@ export class HeaderBar extends React.Component {
 
                     <li className="logo">Trendlier</li>
 
-                    <li><Link to="/in/search" id="new-category">search</Link></li>
-                    <li><Link to="in/wishlist" id="wishlist">wishlist</Link></li>
+                    <li><Link to="/search-page" id="new-category">search</Link></li>
+                    <li><Link to="/wishlist" id="wishlist">wishlist</Link></li>
                     <li><button id="logout" onClick={() => this.logOut()}>log out</button></li>
 
                 </ul>
@@ -46,6 +46,8 @@ export class HeaderBar extends React.Component {
 const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null
 });
+
+
 
 export default requiresLogin()(connect(mapStateToProps)(HeaderBar));
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import { Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
 import Input from './input';
@@ -15,13 +15,13 @@ export class RegistrationForm extends React.Component {
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)))
-            .then(() => this.props.history.push(`/dashboard/search-page`));
+            .then(() => this.props.history.push(`/search-page`));
     }
 
     render() {
-        if (this.props.loggedIn) {
-            return <Redirect to="/dashboard/search-page" />;
-        };
+        // if (this.props.loggedIn) {
+        //     return <Redirect to="/search-page" />;
+        // };
 
         return (
             <section className="signup">
