@@ -1,9 +1,8 @@
 import { 
     FETCH_CATEGORY_DATA_SUCCESS,
     FETCH_CATEGORY_DATA_ERROR,
-    SET_CATEGORY,
-    COLLECTED_DATA
-}  from '../actions/index';
+    SET_CATEGORY
+}  from '../actions/product-data';
 
 const initialState = {
     data: '',
@@ -15,7 +14,7 @@ const initialState = {
 export default function reducer (state = initialState, action) {
     if (action.type === FETCH_CATEGORY_DATA_SUCCESS) {
         return Object.assign({}, state, {
-            data: action.data,
+        fetchedData: action.fetchedData,
             error: null
         });
     } else if (action.type === FETCH_CATEGORY_DATA_ERROR) {
@@ -27,11 +26,8 @@ export default function reducer (state = initialState, action) {
         return Object.assign({}, state, {
             category: action.category
         });
-    } else if (action.type === COLLECTED_DATA) {
-            return Object.assign({}, state, {
-                fetchedData: action.fetchedData
-            });
-    }
+        
+    } 
     return state;
 }    
 

@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-// import { Link } from 'react-router-dom';
-// import Spinner from 'react-spinkit';
-import { fetchData } from "../actions/index";
-// import ResultsItem from './results-item';
+import Spinner from 'react-spinkit';
+
+import { fetchData } from "../actions/product-data";
+import ResultsItem from './results-item';
 import requiresLogin from './requires-login';
 
 class ResultsPage extends React.Component {
     
-
     componentDidMount() {
         const {id} = this.props.match.params;
         console.log(id);
@@ -17,7 +16,6 @@ class ResultsPage extends React.Component {
     };
 
     render() {
-
         let error;
         if (this.props.error) {
             error = (
@@ -27,23 +25,59 @@ class ResultsPage extends React.Component {
             );
         };
 
+        if(!this.props.fetchedData){
+            return (
+        <div>
+            
+            <div >
+                <h2 className="section-title">results</h2>
+                <div id="search-results" aria-live="assertive">
+                    <ul className="row">
+                        <li>
+                            <Spinner spinnername="circle" fadeIn='none' />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+          </div>
+            )
+        } else {
+
+        
+
+        const results = this.props.fetchedData;
+       console.log("results", results);
+        const displayResult = results.map((item, index) => {
+            return(
+                <li key={index}>
+                    <ResultsItem {...item} />
+                </li>
+            )
+        });
+
         return (
                 <div className="dashboard-protected-data">
-                    Category data: {this.props.data};
-                    {console.log("this", this.props.data)}
-                    {error}
+                    
+                {error}
+                {displayResult}
+               
+                
                 </div>
             
         );
+        }
     }
 }
        
 const mapStateToProps = state => {
-    return {
-        data: state.data,
-        error: state.error    
-    }
     
+    const {currentUser} = state.auth;
+    return {
+        username: state.auth.currentUser.username,
+        name: `${currentUser.firstName} ${currentUser.lastName}`,
+        fetchedData: state.trendlier.fetchedData, 
+        error: state.trendlier.error
+    }
     
 };
 

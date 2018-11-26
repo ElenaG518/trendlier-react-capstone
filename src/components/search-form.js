@@ -1,108 +1,64 @@
 import React from 'react';
-import {Field, reduxForm, focus} from 'redux-form';
-// import Select from './select';
-// import requiresLogin from "./requires-login";
-// import { connect } from "react-redux";
-import { setCategory} from '../actions/index';
-// import { Redirect } from "react-router-dom";
+// import {Field, reduxForm, focus} from 'redux-form';
+// import { setCategory} from '../actions/product-data';
+import { connect } from "react-redux";
+import requiresLogin from "./requires-login";
 
-export class SearchForm extends React.Component {
-    // constructor(props) {
-    //     super(props);
 
-    //     this.state = { category: "abcat0204000",
-    //                     counter: 1 
-    //                 };
+export  class SearchForm extends React.Component {
+    
+    constructor(props) {
+        super(props);
+
+        this.state = { term: "" };
+
+        this.onInputChange = this.onInputChange.bind(this);
+        this.onSearchClick = this.onSearchClick.bind(this);
+    }
+    
+    onInputChange(event) {
+        this.setState({ term: event.target.value });
         
+    }
 
-    //     this.onSetCategory = this.onSetCategory.bind(this);
-    //     this.onSearchClick = this.onSearchClick.bind(this);
-    // }
-
-    setNewCategory(category) {
-        if(category==="Category") {
-            alert("Please select a valid category")
-        } else {
-            console.log(category);
-            // console.log(this.state.counter);
-            // console.log(this.state.category);
-            // this.setState({counter: 2});
-            // this.setState({ category: category });
-            // console.log(this.state.counter);
-            // console.log(this.state.category);
-        }            
-            // console.log(this.state.category);
-            return this.props
-            .dispatch(setCategory(category))
-            .then(() => this.props.history.push(`/results-page/1234`));
-            
-            // console.log(this.props.category);
-    }       
-
-
-
-            
-    //         // this.props.history.push(`/results-page/${this.state.category}`)
-    //     }
-    //     console.log("this", this.state.category);
-    //     console.log("this", this.state.counter);
-    //     console.log("that", this.props.category);
-    // }
-
-    // onSearchClick(event) {
-    //     event.prevent.default();
-    //     if (this.state.category) {
-    //         console.log("this", this.props.category);
-    //         this.props.history.push(`/results-page/${this.props.category}`);
-    //     }
-    // }    
-    
-   
-           
-    render() {
-        let error;
-        if (this.props.error) {
-            error = (
-                <div className="form-error" aria-live="polite">
-                    {this.props.error}
-                </div>
-            );
-        };
-    
-
+    onSearchClick(e) {
+        if(this.state.term) {
+            this.props.history.push(`/results-page/${this.state.term}`);
+        }
+    }
+    render() {   
+               
         return (
-            <form className="js-search-form" >                
+            <form className="js-search-form"
+             onSubmit={this.onSearchClick} >                
                 <label htmlFor="category" className="search-label">Please select a category from the drop down menu:</label>
-                {error}
-                <Field name="category" component="select" 
-                    onChange={e => this.setNewCategory(e.target.value)}  >
+               
+                <select name="category" component="select" id="category"
+                    onChange={this.onInputChange}    >
                     <option>Category</option>
                     <option value="abcat0401000">Digital Cameras</option>
-                    <option value="pcmcat242800050021">Health, Fitness & Beauty</option>
+                    <option value="pcmcat242800050021">Health, Fitness and Beauty</option>
                     <option value="abcat0204000">Headphones</option>
                     <option value="pcmcat241600050001">Home Audio</option>
-                    <option value="pcmcat254000050002">Home Automation & Security</option>
-                    <option value="pcmcat209000050006">iPad, Tablets & E-Readers</option>
+                    <option value="pcmcat254000050002">Home Automation and Security</option>
+                    <option value="pcmcat209000050006">iPad, Tablets and E-Readers</option>
                     <option value="abcat0502000">Laptops</option>
-                    <option value="pcmcat310200050004">Portable & Wireless Speakers</option>
+                    <option value="pcmcat310200050004">Portable and Wireless Speakers</option>
                     <option value="abcat0101000">TVs</option>
-                </Field>
-                {/* <button onClick={this.onSearchClick} id="search-button" className="button search-button">search</button> */}
+                </select>
+                <button id="search-button" disabled={this.props.pristine || this.props.submitting}>
+                    search
+                </button>
             </form>
         );
     }
 }
 
-// export const mapStateToProps = state => ({
-//     category: state.category,
-//     data: state.data,
-//     error: state.error
-// });
 
-// export requiresLogin()(connect(mapStateToProps)(SearchForm));
 
-export default reduxForm({
-    form: 'search',
-    onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('search', Object.keys(errors)[0]))
-})(SearchForm);
+export default requiresLogin()(connect()(SearchForm));
+// export default requiresLogin()(reduxForm({
+//     form: 'search',
+//     onSubmitFail: (errors, dispatch) => dispatch(focus('category'))
+// })(SearchForm));
+

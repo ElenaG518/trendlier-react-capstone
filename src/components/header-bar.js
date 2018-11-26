@@ -1,9 +1,11 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link} from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import requiresLogin from './requires-login';
+import { setCategory} from '../actions/product-data';
+// import { Redirect} from 'react-router-dom';
 
 
 export class HeaderBar extends React.Component {
@@ -11,6 +13,13 @@ export class HeaderBar extends React.Component {
         this.props.dispatch(clearAuth());
         clearAuthToken();
     };
+
+    newSearch() {
+        this.props.dispatch(setCategory(''));
+            // .then(() => this.props.history.push(`/search-page`));
+            return <Redirect to="/search-page" />;
+            
+        };
 
     render() {
 
@@ -28,8 +37,8 @@ export class HeaderBar extends React.Component {
 
                     <li className="logo">Trendlier</li>
 
-                    <li><Link to="/search-page" id="new-category">search</Link></li>
                     <li><Link to="/wishlist" id="wishlist">wishlist</Link></li>
+                    <li><Link to="/search-page" id="search-page" onClick={() => this.newSearch()} >search</Link></li>
                     <li><button id="logout" onClick={() => this.logOut()}>log out</button></li>
 
                 </ul>
@@ -44,7 +53,8 @@ export class HeaderBar extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
+    category: state.trendlier.category
 });
 
 

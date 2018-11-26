@@ -9,9 +9,9 @@ export const setCategory = category => ({
 });
 
 export const FETCH_CATEGORY_DATA_SUCCESS = 'FETCH_CATEGORY_DATA_SUCCESS';
-export const fetchCategoryDataSuccess = data => ({
+export const fetchCategoryDataSuccess = fetchedData => ({
     type: FETCH_CATEGORY_DATA_SUCCESS,
-    data
+    fetchedData
 });
 
 export const FETCH_CATEGORY_DATA_ERROR = 'FETCH_CATEGORY_DATA_ERROR';
@@ -20,50 +20,35 @@ export const fetchCategoryDataError = error => ({
     error
 });
 
-export const COLLECTED_DATA = "COLLECTED_DATA";
-export const collectedData = data => ({
-    type: COLLECTED_DATA,
-    fetchedData: data
-});
-export const SHOW_MYLIST = "SHOW_MYLIST";
-export const showMyList = data => ({
-    type: SHOW_MYLIST,
-    mylist: data
-})
+
 
 export const fetchData = category => (dispatch, getState) => {
+    // dispatch(setCategory(category));
+    console.log("fetchdata", category);
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/bestbuy/${category}`, {
         method: 'GET',
-        headers: {
-            // Provide our auth token as credentials
-            Authorization: `Bearer ${authToken}`
-        }
+        mode: "cors",
+    headers: {
+    
+      Authorization: `Bearer ${authToken}`
+    }
+        
     })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(({data}) => dispatch(fetchCategoryDataSuccess(data)))
+        .then(data =>
+            {   console.log("data", data.results);
+                dispatch(fetchCategoryDataSuccess(data.results));
+            }
+        )
         .catch(err => {
             dispatch(fetchCategoryDataError(err));
         });
 };
 
-export const fetchMyList = () => (dispatch, getState) => {
-    const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/products/:username`, {
-            method: 'GET',
-            headers: {
-                // Provide our auth token as credentials
-                Authorization: `Bearer ${authToken}`
-            }
-        })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then(data => dispatch(showMyList(data)))
-        .catch(err => {
-            dispatch(fetchCategoryDataError(err));
-        });
-}
+
+
 
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
-import {Route, withRouter, Switch} from 'react-router-dom';
+import {Route, withRouter} from 'react-router-dom';
 
 import LandingPage from './landing-page';
 import HeaderBar from './header-bar';
@@ -9,7 +9,7 @@ import RegistrationForm  from './registration-form';
 // simport RegistrationPage from './registration-page';
 // import Dashboard from './dashboard';
 import SearchPage  from './search-page';
-import SearchForm  from './search-form';
+// import SearchForm  from './search-form';
 import ResultsPage from './results-page';
 // import Footer from './footer'
 
@@ -52,17 +52,17 @@ export class App extends Component {
            
                 <div className="app">
                     <HeaderBar />
-                    <Switch>
+                    {/* <Switch> */}
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/auth/login" component={LoginForm} />
                     <Route exact path="/auth/signup" component={RegistrationForm} />
                     {/* <Route exact path="/register" component={RegistrationPage} /> */}
                     {/* <Route path="/dashboard" component={Dashboard} /> */}
-                    <Route exact path="/search-page" component={SearchPage}/>
-                    <Route path="/search-form" component={SearchForm} />
-                    <Route path="/results-page/:id" component={ResultsPage} />
+                    <Route  exact path="/search-page" component={SearchPage}/>
+                    {/* <Route  exact path="/search-form" component={SearchForm} /> */}
+                    <Route  path="/results-page/:id" component={ResultsPage} />
                     {/* <Footer /> */}
-                    </Switch>
+                    {/* </Switch> */}
                 </div>
               
             
