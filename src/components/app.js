@@ -6,14 +6,14 @@ import LandingPage from './landing-page';
 import HeaderBar from './header-bar';
 import LoginForm  from './login-form';
 import RegistrationForm  from './registration-form';
-// simport RegistrationPage from './registration-page';
-// import Dashboard from './dashboard';
 import SearchPage  from './search-page';
-// import SearchForm  from './search-form';
 import ResultsPage from './results-page';
+import WishList from './wishlist';
+
 // import Footer from './footer'
 
 import {refreshAuthToken} from '../actions/auth';
+import  ResultsItem  from "./results-item";
 
 
 // import './app.css';
@@ -52,17 +52,15 @@ export class App extends Component {
            
                 <div className="app">
                     <HeaderBar />
-                    {/* <Switch> */}
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/auth/login" component={LoginForm} />
                     <Route exact path="/auth/signup" component={RegistrationForm} />
-                    {/* <Route exact path="/register" component={RegistrationPage} /> */}
-                    {/* <Route path="/dashboard" component={Dashboard} /> */}
-                    <Route  exact path="/search-page" component={SearchPage}/>
-                    {/* <Route  exact path="/search-form" component={SearchForm} /> */}
-                    <Route  path="/results-page/:id" component={ResultsPage} />
+                    <Route exact path="/search-page" component={SearchPage}/>
+                    <Route exact path="/results-page/:id" component={ResultsPage} />
+                    <Route exact path="/results-item" component={ResultsItem} />
+                    <Route exact path="/wishlist" component={WishList} />
                     {/* <Footer /> */}
-                    {/* </Switch> */}
+                    
                 </div>
               
             

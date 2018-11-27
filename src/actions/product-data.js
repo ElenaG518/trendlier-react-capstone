@@ -19,20 +19,27 @@ export const fetchCategoryDataError = error => ({
     type: FETCH_CATEGORY_DATA_ERROR,
     error
 });
-
+export const ADD_WISHLIST_ITEM_SUCCESS = 'ADD_WISHLIST_ITEM_SUCCESS';
+export const addWishlistItemSuccess = wishlistItem => ({
+    type: ADD_WISHLIST_ITEM_SUCCESS,
+    wishlistItem
+});
+export const ADD_WISHLIST_ITEM_ERROR = 'ADD_WISHLIST_ITEM_ERROR';
+export const addWishlistItemError = error => ({
+    type: ADD_WISHLIST_ITEM_ERROR,
+    error
+});
 
 
 export const fetchData = category => (dispatch, getState) => {
-    // dispatch(setCategory(category));
+    
     console.log("fetchdata", category);
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/bestbuy/${category}`, {
         method: 'GET',
-        mode: "cors",
-    headers: {
-    
-      Authorization: `Bearer ${authToken}`
-    }
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
         
     })
         .then(res => normalizeResponseErrors(res))
@@ -47,58 +54,44 @@ export const fetchData = category => (dispatch, getState) => {
         });
 };
 
+export const addItem = item => (dispatch, getState) => {
+    console.log("addItem", item);
+    const authToken = getState().auth.authToken;
 
+    const itemToAdd = {
+        image: item.image,
+        name: item.name,
+        purchaseUrl: item.itemPurchaseLink,
+        regularPrice: item.regular,
+        currentPrice: item.current,
+        rating: item.averageScore,
+        reviewsCount: item.count,
+        description: item.description,
+        notes: item.note,
+        loggedInUserName: item.user
+    }
 
+    console.log(JSON.stringify(itemToAdd));
 
-
-
-
-
-// export const addList = item => (dispatch, getState) => {
-//     const authToken = getState().auth.authToken;
-
-//     const venueDetail = item.detail;
-//     const detailVenueName = venueDetail.name;
-//     const detailCategory = venueDetail.categories[0].name;
-//     const detailAddress1 = venueDetail.location.formattedAddress[0];
-//     const detailAddress2 = venueDetail.location.formattedAddress[1];
-//     const detailAddress = `${detailAddress1}, ${detailAddress2}`;
-//     const lat = venueDetail.location.lat;
-//     const lng = venueDetail.location.lng;
-//     const venueId = venueDetail.id;
-
-//     let detailPhoneNumber = "";
-//     let detailDescription = "";
-//     let detailWebsite = "";
-//     let detailPhoto1 = "";
-//     let detailPhoto2 = "";
-
-//     if(venueDetail.contact.formattedPhone === undefined){
-//         detailPhoneNumber = "Sorry.. No Phone number is available"
-//     } else {
-//         detailPhoneNumber = venueDetail.contact.formattedPhone;
-//     };
-
-//     if(venueDetail.description === undefined){
-//         detailDescription = "Sorry.. No Description is available"
-//     } else {
-//         detailDescription = venueDetail.description;
-//     };
-
-//     if(venueDetail.url === undefined){
-//         detailWebsite = "Sorry.. No Website is available"
-//     } else {
-//         detailWebsite = venueDetail.url;
-//     };
-
-
-
-
-
-
-
-
-
+    return fetch(`${API_BASE_URL}/products/create`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${authToken}`
+            },
+            body: JSON.stringify(itemToAdd),
+            })
+            .then(res => normalizeResponseErrors(res))
+            .then(res => res.json())
+            .then(data =>
+                {   console.log("data", data);
+                dispatch(addWishlistItemSuccess(data));
+                }
+            )
+            .catch(err => {
+                dispatch(addWishlistItemError(err));
+            });
+    }
 
 
 

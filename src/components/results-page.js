@@ -11,9 +11,12 @@ class ResultsPage extends React.Component {
     componentDidMount() {
         const {id} = this.props.match.params;
         console.log(id);
-        this.props.dispatch(fetchData(id));
-        
+        this.props.dispatch(fetchData(id));    
     };
+
+    onSubmit(e) {
+        this.props.history.push(`/wishlist`);
+    }
 
     render() {
         let error;
@@ -25,10 +28,8 @@ class ResultsPage extends React.Component {
             );
         };
 
-        if(!this.props.fetchedData){
+        if(!this.props.fetchedData) {
             return (
-        <div>
-            
             <div >
                 <h2 className="section-title">results</h2>
                 <div id="search-results" aria-live="assertive">
@@ -39,46 +40,38 @@ class ResultsPage extends React.Component {
                     </ul>
                 </div>
             </div>
-          </div>
+         
             )
         } else {
-
-        
-
-        const results = this.props.fetchedData;
-       console.log("results", results);
-        const displayResult = results.map((item, index) => {
-            return(
-                <li key={index}>
-                    <ResultsItem {...item} />
-                </li>
-            )
-        });
-
-        return (
-                <div className="dashboard-protected-data">
-                    
+            const results = this.props.fetchedData;
+            console.log("results", results);
+            const displayResult = results.map((item, index) => {
+                    return (
+                        <li key={index}>
+                            <ResultsItem {...item} onSubmit={e =>this.onSubmit(e)} />
+                        </li>
+                    )
+            });
+ 
+            return (
+                <div className="dashboard-protected-data">   
                 {error}
                 {displayResult}
-               
-                
                 </div>
-            
-        );
+            );
         }
     }
 }
        
 const mapStateToProps = state => {
-    
-    const {currentUser} = state.auth;
     return {
-        username: state.auth.currentUser.username,
-        name: `${currentUser.firstName} ${currentUser.lastName}`,
         fetchedData: state.trendlier.fetchedData, 
         error: state.trendlier.error
     }
-    
 };
 
 export default requiresLogin()(connect(mapStateToProps)(ResultsPage));
+
+
+
+

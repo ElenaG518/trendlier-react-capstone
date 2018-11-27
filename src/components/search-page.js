@@ -1,40 +1,25 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
-// import  SearchForm  from './search-form';
-// import { Redirect} from 'react-router-dom';
+import {Field, reduxForm, focus} from 'redux-form';
+
 
 export class SearchPage extends React.Component {
 
-    constructor(props) {
-        super(props);
-
-        this.state = { term: "" };
-
-        this.onInputChange = this.onInputChange.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
-    
-    onInputChange(event) {
-        this.setState({ term: event.target.value });
-        console.log(this.state.term)
+    onSubmit(values) {
+        console.log("values", values.category);
+        return this.props.history.push(`/results-page/${values.category}`);
+                
     }
 
-    onSubmit(e) {
-        e.preventDefault();
-        if(this.state.term) {
-            this.props.history.push(`/results-page/${this.state.term}`);
-        }
-    }
     render() {   
                
         return (
             <form className="js-search-form"
-             onSubmit={this.onSubmit} >                
-                <label htmlFor="category" className="search-label">Please select a category from the drop down menu:</label>
+                onSubmit={this.props.handleSubmit(values =>
+                    this.onSubmit(values))}> 
+                    <label htmlFor="category" className="search-label">Please select a category from the drop down menu:</label>
                
-                <select name="category" component="select" id="category"
-                    onChange={this.onInputChange}    >
+                <Field name="category" component="select" id="category" >
                     <option>Category</option>
                     <option value="abcat0401000">Digital Cameras</option>
                     <option value="pcmcat242800050021">Health, Fitness and Beauty</option>
@@ -45,18 +30,22 @@ export class SearchPage extends React.Component {
                     <option value="abcat0502000">Laptops</option>
                     <option value="pcmcat310200050004">Portable and Wireless Speakers</option>
                     <option value="abcat0101000">TVs</option>
-                </select>
+                </Field>
                 <button id="search-button" disabled={this.props.pristine || this.props.submitting}>
                     search
                 </button>
             </form>
+            
         );
     }
 }
 
+export default requiresLogin()(reduxForm({
+    form: 'search',
+    onSubmitFail: (errors, dispatch) => dispatch(focus('category'))
+})(SearchPage));
 
 
-export default requiresLogin()(connect()(SearchPage));
 
 
 

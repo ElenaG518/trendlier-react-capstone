@@ -1,14 +1,17 @@
 import { 
     FETCH_CATEGORY_DATA_SUCCESS,
     FETCH_CATEGORY_DATA_ERROR,
-    SET_CATEGORY
+    SET_CATEGORY, 
+    ADD_WISHLIST_ITEM_SUCCESS,
+    ADD_WISHLIST_ITEM_ERROR
 }  from '../actions/product-data';
 
 const initialState = {
     data: '',
     fetchedData: null,
     error: null, 
-    category: ''
+    category: '',
+    wishlistItem: {}
 };
 
 export default function reducer (state = initialState, action) {
@@ -21,10 +24,19 @@ export default function reducer (state = initialState, action) {
         return Object.assign({}, state, {
             error: action.error
         });
-    } 
-    if (action.type === SET_CATEGORY) {
+    } else if (action.type === SET_CATEGORY) {
         return Object.assign({}, state, {
             category: action.category
+        });
+        
+    } else if (action.type === ADD_WISHLIST_ITEM_SUCCESS) {
+        return Object.assign({}, state, {
+            wishlistItem: action.wishlistItem
+        });
+        
+    } else if (action.type === ADD_WISHLIST_ITEM_ERROR) {
+        return Object.assign({}, state, {
+            error: action.error
         });
         
     } 
