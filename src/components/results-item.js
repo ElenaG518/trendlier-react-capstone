@@ -27,13 +27,10 @@ export class ResultsItem extends Component {
          
          console.log("data", data);
 
-        return this.props.dispatch(addItem(data))
-        .then(()=> 
-            {
-                console.log("here", this.props);
-
-                this.props.history.push(`/wishlist/${this.props.username}`); 
-        });
+        return this.props
+        .dispatch(addItem(data))
+        .then(()=> this.props.history.push(`/wishlist/${this.props.username}`)); 
+    
     }
     
    render() {

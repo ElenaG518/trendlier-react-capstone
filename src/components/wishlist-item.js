@@ -2,11 +2,25 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 export class WishlistItem extends Component {
+    constructor(props) {
+        super(props);
+		
+        this.onEditClick = this.onEditClick.bind(this);
+        this.onDeleteClick = this.onDeleteClick.bind(this);
+    };
 
-    // onClick(id) {
-    //     console.log("id", id);
-    //     // this.props.dispatch(editItemNote())
-    // }
+
+    onEditClick(e) {
+        const { id } = this.props;
+        console.log("onEdit", id);
+        // this.props.dispatch(editItemNote())
+    }
+
+    onDeleteClick(e) {
+        const { id } = this.props;
+        console.log("onDelete", id);
+        // this.props.dispatch(deleteItemNote())
+    }
 
     render() {
         
@@ -28,9 +42,9 @@ export class WishlistItem extends Component {
                     
                 </div>
                 <ul>
-            {/* <button className="edit-note" onClick={this.props.onClick(this.props.id)}><li>edit note</li></button> */}
-            <a href={`${this.props.purchaseUrl}`} target="_blank" rel="noopener noreferrer" className="purchase">purchase</a>
-            <button className="delete-item" data={`${this.props.id}`}><li>delete item</li></button>
+            <li><button className="edit-note" onClick={this.onEditClick}>edit note</button></li>
+            <li><a href={`${this.props.purchaseUrl}`} target="_blank" rel="noopener noreferrer" className="purchase">purchase</a></li>
+            <li><button className="delete-item" onClick={this.onDeleteClick}>delete item</button></li>
             </ul>
                 
             </div>

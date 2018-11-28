@@ -145,20 +145,10 @@ export const addItem = item => (dispatch, getState) => {
 
 
 
-// export const fetchToEdit = id => (dispatch, getState) => {
+export const editItemNote = id => (dispatch, getState) => {
 
-//     const authToken = getState().auth.authToken;
-//     return fetch(`${API_BASE_URL}/api/mylist/${encodeURIComponent(id)}`, {
-//             method: 'GET',
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json',
-//                 Authorization: `Bearer ${authToken}`
-//             }
-//         })
-//         .then(res => res.json())
-//         .then(json => dispatch(editMemoItem(json)))
-// }
+    //   
+}
 
 
 
