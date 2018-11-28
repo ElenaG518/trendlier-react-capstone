@@ -16,18 +16,14 @@ export class HeaderBar extends React.Component {
 
     newSearch() {
         this.props.dispatch(setCategory(''));
-            // .then(() => this.props.history.push(`/search-page`));
             return <Redirect to="/search-page" />;
             
         };
 
     render() {
 
-        
-
         // Only render the navigation bar if we are logged in
         
-
         return (
             <div className="top-menu">
         <nav className="top-navigation" role="navigation">
@@ -37,7 +33,7 @@ export class HeaderBar extends React.Component {
 
                     <li className="logo">Trendlier</li>
 
-                    <li><Link to="/wishlist" id="wishlist">wishlist</Link></li>
+                    <li><Link to={`/wishlist/${this.props.username}`} id="wishlist">wishlist</Link></li>
                     <li><Link to="/search-page" id="search-page" onClick={() => this.newSearch()} >search</Link></li>
                     <li><button id="logout" onClick={() => this.logOut()}>log out</button></li>
 
@@ -54,7 +50,8 @@ export class HeaderBar extends React.Component {
 
 const mapStateToProps = state => ({
     loggedIn: state.auth.currentUser !== null,
-    category: state.trendlier.category
+    category: state.trendlier.category,
+    username: state.auth.currentUser.username
 });
 
 

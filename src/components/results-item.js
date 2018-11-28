@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {addItem} from "../actions/product-data"
-
+import {withRouter} from "react-router-dom"
 
 
 export class ResultsItem extends Component {
@@ -27,8 +27,13 @@ export class ResultsItem extends Component {
          
          console.log("data", data);
 
-        this.props.dispatch(addItem(data));
-        // .then(()=> this.props.history.push(`/wishlist`));
+        return this.props.dispatch(addItem(data))
+        .then(()=> 
+            {
+                console.log("here", this.props);
+
+                this.props.history.push(`/wishlist/${this.props.username}`); 
+        });
     }
     
    render() {
@@ -67,5 +72,5 @@ const mapStateToProps = state => ({
     username: state.auth.currentUser.username
 });
 
-export default connect(mapStateToProps)(ResultsItem);
+export default connect(mapStateToProps)(withRouter(ResultsItem));
 

@@ -14,10 +14,6 @@ class ResultsPage extends React.Component {
         this.props.dispatch(fetchData(id));    
     };
 
-    onSubmit(e) {
-        this.props.history.push(`/wishlist`);
-    }
-
     render() {
         let error;
         if (this.props.error) {
@@ -28,7 +24,7 @@ class ResultsPage extends React.Component {
             );
         };
 
-        if(!this.props.fetchedData) {
+        if (!this.props.fetchedData) {
             return (
             <div >
                 <h2 className="section-title">results</h2>
@@ -46,10 +42,10 @@ class ResultsPage extends React.Component {
             const results = this.props.fetchedData;
             console.log("results", results);
             const displayResult = results.map((item, index) => {
-                    return (
-                        <li key={index}>
-                            <ResultsItem {...item} onSubmit={e =>this.onSubmit(e)} />
-                        </li>
+                return (
+                    <li key={index}>
+                        <ResultsItem {...item}  />
+                    </li>
                     )
             });
  
@@ -66,12 +62,9 @@ class ResultsPage extends React.Component {
 const mapStateToProps = state => {
     return {
         fetchedData: state.trendlier.fetchedData, 
-        error: state.trendlier.error
+        error: state.trendlier.error,
+        username: state.auth.currentUser.username
     }
 };
 
 export default requiresLogin()(connect(mapStateToProps)(ResultsPage));
-
-
-
-

@@ -3,7 +3,9 @@ import {
     FETCH_CATEGORY_DATA_ERROR,
     SET_CATEGORY, 
     ADD_WISHLIST_ITEM_SUCCESS,
-    ADD_WISHLIST_ITEM_ERROR
+    ADD_WISHLIST_ITEM_ERROR,
+    FETCH_WISHLIST_SUCCESS,
+    FETCH_WISHLIST_ERROR
 }  from '../actions/product-data';
 
 const initialState = {
@@ -39,7 +41,15 @@ export default function reducer (state = initialState, action) {
             error: action.error
         });
         
-    } 
+    } else if (action.type === FETCH_WISHLIST_SUCCESS) {
+        return Object.assign({}, state, {
+            wishlist: action.wishlist
+        });
+    } else if (action.type === FETCH_WISHLIST_ERROR) {
+        return Object.assign({}, state, {
+            error: action.error
+        });
+    }      
     return state;
 }    
 

@@ -58,7 +58,7 @@ export class App extends Component {
                     <Route exact path="/search-page" component={SearchPage}/>
                     <Route exact path="/results-page/:id" component={ResultsPage} />
                     <Route exact path="/results-item" component={ResultsItem} />
-                    <Route exact path="/wishlist" component={WishList} />
+                    <Route exact path="/wishlist/:username" component={WishList} />
                     {/* <Footer /> */}
                     
                 </div>

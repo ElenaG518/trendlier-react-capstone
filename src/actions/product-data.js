@@ -1,7 +1,6 @@
 import {API_BASE_URL} from '../config';
 import {normalizeResponseErrors} from './utils';
 
-
 export const SET_CATEGORY = 'SET_CATEGORY';
 export const setCategory = category => ({
     type: SET_CATEGORY,
@@ -29,7 +28,16 @@ export const addWishlistItemError = error => ({
     type: ADD_WISHLIST_ITEM_ERROR,
     error
 });
-
+export const FETCH_WISHLIST_SUCCESS = 'FETCH_WISHLIST_SUCCESS';
+export const fetchWishlistSuccess = wishlist => ({
+    type: FETCH_WISHLIST_SUCCESS,
+    wishlist
+});
+export const FETCH_WISHLIST_ERROR = 'FETCH_WISHLIST_ERROR';
+export const fetchWishlistError = error => ({
+    type: FETCH_WISHLIST_ERROR,
+    error
+});
 
 export const fetchData = category => (dispatch, getState) => {
     
@@ -93,6 +101,28 @@ export const addItem = item => (dispatch, getState) => {
             });
     }
 
+    export const fetchWishlist = user => (dispatch, getState) => {
+    
+        console.log("fetchWishlist", user);
+        const authToken = getState().auth.authToken;
+        return fetch(`${API_BASE_URL}/products/${user}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${authToken}`
+            }
+            
+        })
+            .then(res => normalizeResponseErrors(res))
+            .then(res => res.json())
+            .then(data =>
+                {   console.log("data", data);
+                    dispatch(fetchWishlistSuccess(data));
+                }
+            )
+            .catch(err => {
+                dispatch(fetchWishlistError(err));
+            });
+    };
 
 
 
