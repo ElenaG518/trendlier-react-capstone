@@ -1,12 +1,13 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Link, Redirect} from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import requiresLogin from './requires-login';
 import { setCategory} from '../actions/product-data';
 // import { Redirect} from 'react-router-dom';
 
+import './header-bar.css';
 
 export class HeaderBar extends React.Component {
     logOut() {
@@ -16,9 +17,7 @@ export class HeaderBar extends React.Component {
 
     newSearch() {
         this.props.dispatch(setCategory(''));
-            return <Redirect to="/search-page" />;
-            
-        };
+    };
 
     render() {
 
@@ -26,23 +25,14 @@ export class HeaderBar extends React.Component {
         
         return (
             <div className="top-menu">
-        <nav className="top-navigation" role="navigation">
-
-            <div className="content ">
-                <ul className="links ">
-
-                    <li className="logo">Trendlier</li>
-
-                    <li><Link to={`/wishlist/${this.props.username}`} id="wishlist">wishlist</Link></li>
-                    <li><Link to="/search-page" id="search-page" onClick={() => this.newSearch()} >search</Link></li>
-                    <li><button id="logout" onClick={() => this.logOut()}>log out</button></li>
-
-                </ul>
-            </div>
-
-        </nav>
-    
-                
+                <h1 className="logo">{this.props.title}</h1>
+                <nav className="top-navigation" role="navigation">
+                {/* <div className="content "> */}
+                    <ul className="links "><li><Link to={`/wishlist/${this.props.username}`} id="wishlist">wishlist</Link></li>
+                        <li><Link to="/search-page" id="search-page" onClick={() => this.newSearch()}>search</Link></li>
+                        <li><button id="logout" onClick={() => this.logOut()}>log out</button></li>
+                    </ul>
+                </nav>
             </div>
         );
     }

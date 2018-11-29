@@ -7,7 +7,6 @@ import {fetchWishlist} from "../actions/product-data"
 
 import WishlistItem from "./wishlist-item";
 
-
 class WishList extends Component {
 
     componentDidMount() {
@@ -18,13 +17,10 @@ class WishList extends Component {
         .then(()=>console.log("wishlist", this.props.wishlist.products));
     };
 
-
-
     render() {
         if(!this.props.wishlist){
             return (
             <div>
-                
                 <div className="mylist-section" role="region">
                     <h2 className="mylist-title">My Wishlist</h2>
                     <div className="mylist-results">
@@ -52,7 +48,6 @@ class WishList extends Component {
                     <div className="mylist-results">
                         <ul>{displayResults}</ul>
                         <Link to="/search-page" id="search-page">new search</Link>
-                        
                     </div>
                 </div>
             </div>
@@ -62,7 +57,6 @@ class WishList extends Component {
 
 
 const mapStateToProps = state => ({
-   
     wishlist: state.trendlier.wishlist
 });
 

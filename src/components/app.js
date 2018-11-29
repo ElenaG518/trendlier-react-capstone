@@ -13,8 +13,6 @@ import WishList from './wishlist';
 // import Footer from './footer'
 
 import {refreshAuthToken} from '../actions/auth';
-import  ResultsItem  from "./results-item";
-
 
 // import './app.css';
 
@@ -50,21 +48,18 @@ export class App extends Component {
     render() {
         return (
            
-                <div className="app">
-                    <HeaderBar />
-                    <Route exact path="/" component={LandingPage} />
-                    <Route exact path="/auth/login" component={LoginForm} />
-                    <Route exact path="/auth/signup" component={RegistrationForm} />
-                    <Route exact path="/search-page" component={SearchPage}/>
-                    <Route exact path="/results-page/:id" component={ResultsPage} />
-                    <Route exact path="/results-item" component={ResultsItem} />
-                    <Route exact path="/wishlist/:username" component={WishList} />
-                    {/* <Footer /> */}
-                    
-                </div>
-              
-            
-        );
+            <div className="app">
+                <HeaderBar title="Trendlier"/>
+                <Route exact path="/" component={LandingPage} />
+                <Route exact path="/auth/login" component={LoginForm} />
+                <Route exact path="/auth/signup" component={RegistrationForm} />
+                <Route exact path="/search-page" component={SearchPage}/>
+                <Route exact path="/results-page/:id" component={ResultsPage} />
+                <Route exact path="/wishlist/:username" component={WishList} />
+                {/* <Route exact path="/edit-item/:id" component={EditItem} /> */}
+                {/* <Footer /> */}        
+            </div>
+       );
     }
 }
 

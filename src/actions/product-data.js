@@ -38,6 +38,16 @@ export const fetchWishlistError = error => ({
     type: FETCH_WISHLIST_ERROR,
     error
 });
+export const FETCH_EDIT_ITEM_SUCCESS = 'FETCH_EDIT_ITEM_SUCCESS';
+export const fetchEditItemSuccess = itemToEdit => ({
+    type: FETCH_EDIT_ITEM_SUCCESS,
+    itemToEdit
+});
+export const FETCH_EDIT_ITEM_ERROR = 'FETCH_EDIT_ITEM_ERROR';
+export const fetchEditItemError = error => ({
+    type: FETCH_EDIT_ITEM_ERROR,
+    error
+});
 
 export const fetchData = category => (dispatch, getState) => {
     
@@ -124,8 +134,6 @@ export const addItem = item => (dispatch, getState) => {
             });
     };
 
-
-
 // export const editMemoInList = editedMemo => (dispatch, getState) => {
 //     const authToken = getState().auth.authToken;
 //     return fetch(`${API_BASE_URL}/api/mylist/edit-memo/${encodeURIComponent(editedMemo.id)}`, {
@@ -146,23 +154,37 @@ export const addItem = item => (dispatch, getState) => {
 
 
 export const editItemNote = id => (dispatch, getState) => {
+    console.log("editItemNote", id);
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/products/edit/${id}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Bearer ${authToken}`
+        }
+        
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(data =>
+            {   console.log("data", data);
+                dispatch(fetchEditItemSuccess(data));
+            }
+        )
+        .catch(err => {
+            dispatch(fetchEditItemError(err));
+        });
+};
 
-    //   
-}
-
-
-
-// export const deletePost = id => (dispatch, getState) => {
-//     console.log(id)
-
-//     const authToken = getState().auth.authToken;
-//     return fetch(`${API_BASE_URL}/api/mylist/${encodeURIComponent(id)}`, {
-//             method: 'DELETE',
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json',
-//                 Authorization: `Bearer ${authToken}`
-//             }
-//         })
-//         .catch(err => err);
-// }
+export const deleteWishlistItem = id => (dispatch, getState) => {
+    console.log("deleteWishlistItem", id);
+    const authToken = getState().auth.authToken;
+    return fetch(`${API_BASE_URL}/products/${id}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${authToken}`
+        }
+    })
+    .then(res => normalizeResponseErrors(res))
+    .then(() => console.log("success"))
+    .catch(err => err);
+    };
