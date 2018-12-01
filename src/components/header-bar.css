@@ -1,0 +1,36 @@
+.logo {
+    font-family: 'Audiowide', cursive;
+    color: darkgrey;
+}
+
+.top-menu {
+    border-bottom: 1px solid lightgray;
+    padding: 10px;
+    width: 100%;
+}
+
+.links {
+    text-align: right;
+}
+
+.top-menu h1,
+.top-menu nav,
+.top-navigation li {
+    display: inline-block;
+    line-height: 50px;
+    vertical-align: middle;
+}
+
+.top-navigation li,
+.top-navigation a {
+    margin-right: 10px;
+}
+
+.top-navigation a,
+.top-navigation button {
+    text-decoration: none;
+    border: 0;
+    font-size: 16px;
+    font-family: sans-serif;
+    color: darkgray;
+}

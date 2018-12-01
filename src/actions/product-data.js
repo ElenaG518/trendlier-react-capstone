@@ -38,14 +38,14 @@ export const fetchWishlistError = error => ({
     type: FETCH_WISHLIST_ERROR,
     error
 });
-export const FETCH_EDIT_ITEM_SUCCESS = 'FETCH_EDIT_ITEM_SUCCESS';
-export const fetchEditItemSuccess = itemToEdit => ({
-    type: FETCH_EDIT_ITEM_SUCCESS,
-    itemToEdit
+export const DELETE_ITEM_FROM_LOCAL = 'DELETE_ITEM_FROM_LOCAL';
+export const deteleItemFromLocal = deletedLocalItem => ({
+    type: DELETE_ITEM_FROM_LOCAL,
+    deletedLocalItem
 });
-export const FETCH_EDIT_ITEM_ERROR = 'FETCH_EDIT_ITEM_ERROR';
-export const fetchEditItemError = error => ({
-    type: FETCH_EDIT_ITEM_ERROR,
+export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
+export const deleteItemError = error => ({
+    type: DELETE_ITEM_ERROR,
     error
 });
 
@@ -134,50 +134,57 @@ export const addItem = item => (dispatch, getState) => {
             });
     };
 
-// export const editMemoInList = editedMemo => (dispatch, getState) => {
-//     const authToken = getState().auth.authToken;
-//     return fetch(`${API_BASE_URL}/api/mylist/edit-memo/${encodeURIComponent(editedMemo.id)}`, {
-//         method: 'PUT',
-//         body: JSON.stringify(editedMemo),
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json',
-//             Authorization: `Bearer ${authToken}`
-//         }
-//     }).then(res => {
-//         return res;
-//     })
-//     .catch(err => err);
-// }
-
-
-
-
-export const editItemNote = id => (dispatch, getState) => {
-    console.log("editItemNote", id);
+export const editWishlistItem = (note, id) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/products/edit/${id}`, {
-        method: 'GET',
+
+    const noteToUpdate = {
+                notes: note, 
+                id: id
+        };
+    console.log("this", noteToUpdate, id);
+    return fetch(`${API_BASE_URL}/products/update/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify(noteToUpdate),
         headers: {
-          Authorization: `Bearer ${authToken}`
+            // 'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${authToken}`
         }
-        
+    }).then(res => {
+        return res;
     })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then(data =>
-            {   console.log("data", data);
-                dispatch(fetchEditItemSuccess(data));
-            }
-        )
-        .catch(err => {
-            dispatch(fetchEditItemError(err));
-        });
-};
+    .catch(err => err);
+}
+
+
+
+
+// export const editItemNote = id => (dispatch, getState) => {
+//     console.log("editItemNote", id);
+//     const authToken = getState().auth.authToken;
+//     return fetch(`${API_BASE_URL}/products/edit/${id}`, {
+//         method: 'GET',
+//         headers: {
+//           Authorization: `Bearer ${authToken}`
+//         }
+        
+//     })
+//         .then(res => normalizeResponseErrors(res))
+//         .then(res => res.json())
+//         .then(data =>
+//             {   console.log("data", data);
+//                 dispatch(fetchEditItemSuccess(data));
+//             }
+//         )
+//         .catch(err => {
+//             dispatch(fetchEditItemError(err));
+//         });
+// };
 
 export const deleteWishlistItem = id => (dispatch, getState) => {
     console.log("deleteWishlistItem", id);
     const authToken = getState().auth.authToken;
+    // dispatch(localDeleteItem);
     return fetch(`${API_BASE_URL}/products/${id}`, {
         method: 'DELETE',
         headers: {
@@ -185,6 +192,15 @@ export const deleteWishlistItem = id => (dispatch, getState) => {
         }
     })
     .then(res => normalizeResponseErrors(res))
-    .then(() => console.log("success"))
-    .catch(err => err);
-    };
+    .then(() =>
+        {   console.log("success");
+            dispatch(deteleItemFromLocal());
+        }
+    )
+    .catch(err => {
+        dispatch(deleteItemError(err));
+    });
+}    
+
+    // send to server as doing
+    // dispatch to delete from local 

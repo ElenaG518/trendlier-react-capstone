@@ -29,7 +29,8 @@ export class ResultsItem extends Component {
 
         return this.props
         .dispatch(addItem(data))
-        .then(()=> this.props.history.push(`/wishlist/${this.props.username}`)); 
+        .then(()=> alert("Item added to wishlist")); 
+        // .then(()=> this.props.history.push(`/wishlist/${this.props.username}`)); 
     
     }
     

@@ -3,31 +3,37 @@ import { connect } from "react-redux";
 import {withRouter} from "react-router-dom"
 import EditItem from "./edit-item";
 
-import {deleteWishlistItem
-    // , fetchWishlist
+import {deleteWishlistItem, fetchWishlist
 } from "../actions/product-data";
 
 export class WishlistItem extends Component {
     constructor(props) {
         super(props);
-		
+        
+        this.state = {
+            mode: "view"
+        }
+
         this.onEditClick = this.onEditClick.bind(this);
         this.onDeleteClick = this.onDeleteClick.bind(this);
     };
 
     onEditClick(e) {
+            this.setState({mode: "edit"});
         console.log("Wishlist-item props", this.props);  
-        return (<EditItem {...this.props} />)      
+             
     }
 
     onDeleteClick(e) {
         const { id, loggedInUserName } = this.props;
         console.log("props", this.props);  
         console.log("onDelete", id, loggedInUserName);
-        // confirm("Are you sure you want to delete item?");
+        window.confirm("Are you sure you want to delete item?");
         this.props.dispatch(deleteWishlistItem(id))
-        window.location.reload();
-		this.props.history.push(`/wishlist/${loggedInUserName}`);
+        .then(() => this.props.dispatch(fetchWishlist(loggedInUserName)))
+        // window.location.reload();
+        // window.location= `/wishlist/${loggedInUserName}`;
+		// this.props.history.push(`/wishlist/${loggedInUserName}`);
 
         // .then(() => this.props.dispatch(fetchWishlist(loggedInUserName)))
         // .then(()=> alert("item has been deleted"));
@@ -35,6 +41,11 @@ export class WishlistItem extends Component {
 
 
     render() {
+        
+        
+        if (this.state.mode==="edit") {
+        return (<EditItem {...this.props} />); 
+        }
         return (
             <div>                
                 <div className="picture">
