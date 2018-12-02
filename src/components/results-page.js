@@ -6,8 +6,7 @@ import { fetchData } from "../actions/product-data";
 import ResultsItem from './results-item';
 import requiresLogin from './requires-login';
 
-class ResultsPage extends React.Component {
-    
+class ResultsPage extends React.Component {    
     componentDidMount() {
         const {id} = this.props.match.params;
         console.log(id);

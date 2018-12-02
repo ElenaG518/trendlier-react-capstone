@@ -6,7 +6,6 @@ export const setCategory = category => ({
     type: SET_CATEGORY,
     category
 });
-
 export const FETCH_CATEGORY_DATA_SUCCESS = 'FETCH_CATEGORY_DATA_SUCCESS';
 export const fetchCategoryDataSuccess = fetchedData => ({
     type: FETCH_CATEGORY_DATA_SUCCESS,
@@ -79,14 +78,14 @@ export const addItem = item => (dispatch, getState) => {
     const itemToAdd = {
         image: item.image,
         name: item.name,
-        purchaseUrl: item.itemPurchaseLink,
-        regularPrice: item.regular,
-        currentPrice: item.current,
-        rating: item.averageScore,
-        reviewsCount: item.count,
+        purchaseUrl: item.purchaseUrl,
+        regularPrice: item.regularPrice,
+        currentPrice: item.currentPrice,
+        rating: item.rating,
+        reviewsCount: item.reviewsCount,
         description: item.description,
-        notes: item.note,
-        loggedInUserName: item.user
+        notes: item.notes,
+        loggedInUserName: item.loggedInUserName
     }
 
     console.log(JSON.stringify(itemToAdd));
@@ -155,31 +154,6 @@ export const editWishlistItem = (note, id) => (dispatch, getState) => {
     })
     .catch(err => err);
 }
-
-
-
-
-// export const editItemNote = id => (dispatch, getState) => {
-//     console.log("editItemNote", id);
-//     const authToken = getState().auth.authToken;
-//     return fetch(`${API_BASE_URL}/products/edit/${id}`, {
-//         method: 'GET',
-//         headers: {
-//           Authorization: `Bearer ${authToken}`
-//         }
-        
-//     })
-//         .then(res => normalizeResponseErrors(res))
-//         .then(res => res.json())
-//         .then(data =>
-//             {   console.log("data", data);
-//                 dispatch(fetchEditItemSuccess(data));
-//             }
-//         )
-//         .catch(err => {
-//             dispatch(fetchEditItemError(err));
-//         });
-// };
 
 export const deleteWishlistItem = id => (dispatch, getState) => {
     console.log("deleteWishlistItem", id);
