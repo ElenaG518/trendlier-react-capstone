@@ -1,8 +1,6 @@
 import React from 'react';
-import {addItem} from "../actions/product-data";
-import { connect } from "react-redux";
 
-export class AddForm extends React.Component {
+export default class AddForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,27 +12,11 @@ export class AddForm extends React.Component {
         event.preventDefault();
         console.log("props", this.props);
         const text = this.textInput.value.trim();
-        const data={
-            image:this.props.images.standard,
-            name: this.props.names.title,
-            purchaseUrl: this.props.links.web,
-            regularPrice: this.props.prices.regular,
-            currentPrice: this.props.prices.current,
-            rating: this.props.customerReviews.averageScore,
-            reviewsCount: this.props.customerReviews.count,
-            description: this.props.descriptions.short,
-            notes: text,            
-            loggedInUserName:this.props.username
-         }
-         
-         console.log("data", data);
+        if (text && this.props.onAdd) {
+            this.props.onAdd(text);
+        }
         this.textInput.value = '';
-        
-        this.props
-        .dispatch(addItem(data));
         this.setAdding(false);
-         
-
     }
 
     setAdding(adding) {
@@ -49,7 +31,7 @@ export class AddForm extends React.Component {
             return (
                 <div className="add-button">
                 <button onClick={() => this.setAdding(true)}>
-                    {text}
+                {text}
                 </button>    
                 </div>
             );
@@ -72,8 +54,4 @@ export class AddForm extends React.Component {
     }
 }
 
-const mapStateToProps = state => ({
-    username: state.auth.currentUser.username
-});
 
-export default connect(mapStateToProps)(AddForm);
