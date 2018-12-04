@@ -12,7 +12,6 @@ export class SearchPage extends React.Component {
     }
 
     render() {   
-               
         return (
             <form className="js-search-form"
                 onSubmit={this.props.handleSubmit(values =>
@@ -44,32 +43,3 @@ export default requiresLogin()(reduxForm({
     form: 'search',
     onSubmitFail: (errors, dispatch) => dispatch(focus('category'))
 })(SearchPage));
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-//         return (
-//             <div className="content ">
-//                 <h1>Search Form</h1>
-//                 <SearchForm />
-//             </div>
-//         );
-    
-// }    
-
-// const mapStateToProps = state => ({
-//     category: state.trendlier.category
-// });
-
-// export default requiresLogin()(connect()(SearchPage));
-

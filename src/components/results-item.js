@@ -43,7 +43,8 @@ export class ResultsItem extends Component {
                         onAdd={text => this.addListItem(text)}
                     />
                     <a href={`${this.props.links.web}`} target="_blank" rel="noopener noreferrer" className="purchase">
-                    purchase</a>  
+                    purchase</a> 
+                    
                 </div>
             </div>
         )

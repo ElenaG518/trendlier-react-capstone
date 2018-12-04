@@ -44,6 +44,7 @@ class ResultsPage extends React.Component {
                 return (
                     <li key={index}>
                         <ResultsItem {...item}  />
+                        <hr id="divideLine" />
                     </li>
                     )
             });

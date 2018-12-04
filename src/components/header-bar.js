@@ -5,7 +5,7 @@ import {clearAuth} from '../actions/auth';
 import {clearAuthToken} from '../local-storage';
 import requiresLogin from './requires-login';
 import { setCategory} from '../actions/product-data';
-// import { Redirect} from 'react-router-dom';
+
 
 import './header-bar.css';
 
