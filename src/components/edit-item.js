@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 // import { connect } from "react-redux";
 import EditForm from './edit-form';
+import {editWishlistItem, fetchWishlist} from "../actions/product-data";
 
-export default class EditItem extends Component {
+export class EditItem extends Component {
     render() {
         return (
             <div>                

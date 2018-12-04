@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-// import {withRouter} from "react-router-dom";
 import {addItem} from "../actions/product-data";
 import AddForm from './add-form';
 

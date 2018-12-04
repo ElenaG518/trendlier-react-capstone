@@ -1,9 +1,6 @@
 import React from 'react';
-import {editWishlistItem, fetchWishlist} from "../actions/product-data";
-import { connect } from "react-redux";
-import {withRouter} from "react-router-dom";
 
-export  class EditForm extends React.Component {
+export default class EditForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -13,14 +10,13 @@ export  class EditForm extends React.Component {
 
     onSubmit(event) {
         event.preventDefault();
+        console.log("props", this.props);
         const text = this.textInput.value.trim();
-                
-         console.log("text", text);
-        // this.textInput.value = '';
-        this.props
-        .dispatch(editWishlistItem(text, this.props.id))
-        .then(()=> this.props.dispatch(fetchWishlist(this.props.loggedInUserName)));
-        this.setEditing(false); 
+        if (text && this.props.onEdit) {
+            this.props.onEdit(text);
+        }
+        this.textInput.value = '';
+        this.setEditing(false);
     }
 
     setEditing(editing) {
@@ -31,9 +27,6 @@ export  class EditForm extends React.Component {
 
     render() {
         if (!this.state.editing) {
-            console.log("this props", this.props);
-            
-            
             const text = `Edit wishlist note`;
             return (
                 <div className="add-button">
@@ -50,7 +43,7 @@ export  class EditForm extends React.Component {
                 <textarea
                     name="notes"
                     id="notes"
-                    rows="10" cols="40"
+                    rows="5" cols="20"
                     defaultValue = {`${this.props.notes}`}
                     type="text"
                     ref={input => this.textInput = input}
@@ -66,5 +59,3 @@ export  class EditForm extends React.Component {
         );
     }
 }
-
-export default connect()(withRouter(EditForm));

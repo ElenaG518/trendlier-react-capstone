@@ -41,6 +41,7 @@ export default class AddForm extends React.Component {
             <form className="card add-form" onSubmit={(e) => this.onSubmit(e)}>
                 <textarea
                     type="text"
+                    rows="5" cols="20"
                     ref={input => this.textInput = input}
                     aria-label={label}
                     placeholder ="Add note..."
