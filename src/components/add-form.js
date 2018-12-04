@@ -10,6 +10,7 @@ export default class AddForm extends React.Component {
 
     onSubmit(event) {
         event.preventDefault();
+        console.log("state", this.state.adding);
         console.log("props", this.props);
         const text = this.textInput.value.trim();
         if (text && this.props.onAdd) {
@@ -38,7 +39,7 @@ export default class AddForm extends React.Component {
         }
         const label = `Add a note to wishlist item`;
         return (
-            <form className="card add-form" onSubmit={(e) => this.onSubmit(e)}>
+            <form className="add-form" onSubmit={(e) => this.onSubmit(e)}>
                 <textarea
                     type="text"
                     rows="5" cols="20"
