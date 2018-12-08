@@ -2,14 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import Spinner from 'react-spinkit';
 
-import { fetchData } from "../actions/product-data";
+import { fetchData, clearFetchedData } from "../actions/product-data";
 import ResultsItem from './results-item';
 import requiresLogin from './requires-login';
+import './results-page.css'
 
 class ResultsPage extends React.Component {    
     componentDidMount() {
         const {id} = this.props.match.params;
         console.log(id);
+        this.props.dispatch(clearFetchedData(null));
         this.props.dispatch(fetchData(id));    
     };
 
@@ -50,9 +52,12 @@ class ResultsPage extends React.Component {
             });
  
             return (
-                <div className="dashboard-protected-data">   
+                <div className="results">
+                <h2>Trending Items</h2>
+                <div className="flex">   
                 {error}
                 {displayResult}
+                </div>
                 </div>
             );
         }

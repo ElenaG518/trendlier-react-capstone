@@ -5,16 +5,16 @@ import {
     ADD_WISHLIST_ITEM_SUCCESS,
     ADD_WISHLIST_ITEM_ERROR,
     FETCH_WISHLIST_SUCCESS,
-    FETCH_WISHLIST_ERROR
+    FETCH_WISHLIST_ERROR,
+    CLEAR_FETCHED_DATA
+
 }  from '../actions/product-data';
 
 const initialState = {
     data: '',
     fetchedData: null,
     error: null, 
-    category: '',
-    wishlistItem: {},
-    itemToEdit: null    
+    category: ''
 };
 
 export default function reducer (state = initialState, action) {
@@ -34,7 +34,8 @@ export default function reducer (state = initialState, action) {
         
     } else if (action.type === ADD_WISHLIST_ITEM_SUCCESS) {
         return Object.assign({}, state, {
-            wishlistItem: action.wishlistItem
+            wishlistItem: action.wishlistItem,
+            error: null
         });
         
     } else if (action.type === ADD_WISHLIST_ITEM_ERROR) {
@@ -44,11 +45,16 @@ export default function reducer (state = initialState, action) {
         
     } else if (action.type === FETCH_WISHLIST_SUCCESS) {
         return Object.assign({}, state, {
-            wishlist: action.wishlist
+            wishlist: action.wishlist,
+            error: null
         });
     } else if (action.type === FETCH_WISHLIST_ERROR) {
         return Object.assign({}, state, {
             error: action.error
+        });
+    } else if (action.type === CLEAR_FETCHED_DATA) {
+        return Object.assign({}, state, {
+            fetchedData: action.fetchedData
         });
     } 
          

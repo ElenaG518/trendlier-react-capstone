@@ -1,0 +1,28 @@
+.back-img {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../assets/gadget.jpg") no-repeat center center fixed;
+    background-size: cover;
+    background-color: #1854a2;
+    color: #ffeda4;
+    position: fixed;
+}
+
+.transparent {
+    background: #141920c4;
+    height: 100%;
+    width: 100%;
+}
+
+.js-search-form {
+    padding-top: 50px;
+    margin: 0 auto;
+}
+
+select {
+    padding: 3px;
+    font-size: 16px;
+    margin: 25px auto 0;
+}

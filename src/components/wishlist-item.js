@@ -12,17 +12,20 @@ export class WishlistItem extends Component {
     editListItem(text) {
         console.log("text",  text);
         this.props.dispatch(editWishlistItem(text, this.props.id))
-        .then(()=> this.props.dispatch(fetchWishlist(this.props.loggedInUserName)))
-        .then(()=> alert("item edit sucessful"));    
+        .then(()=> this.props.dispatch(fetchWishlist(this.props.loggedInUserName)));
     }
 
     onDeleteClick(e) {
         const { id, loggedInUserName } = this.props;
         console.log("wishlist item props", this.props);  
         console.log("onDelete", id, loggedInUserName);
-        window.confirm("Are you sure you want to delete item?");
-        this.props.dispatch(deleteWishlistItem(id))
-        .then(() => this.props.dispatch(fetchWishlist(loggedInUserName)))
+        const result = window.confirm("Are you sure you want to delete this item from the wishlist?");
+        console.log(result);
+        if (result=== true) {
+                this.props.dispatch(deleteWishlistItem(id))
+            .then(() => this.props.dispatch(fetchWishlist(loggedInUserName)))
+        }
+
     }  
 
     render() {

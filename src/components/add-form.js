@@ -31,7 +31,7 @@ export default class AddForm extends React.Component {
             const text = `Add item to wishlist`;
             return (
                 <div className="add-button">
-                <button onClick={() => this.setAdding(true)}>
+                <button className="add-item" onClick={() => this.setAdding(true)}>
                 {text}
                 </button>    
                 </div>
@@ -42,7 +42,7 @@ export default class AddForm extends React.Component {
             <form className="add-form" onSubmit={(e) => this.onSubmit(e)}>
                 <textarea
                     type="text"
-                    rows="5" cols="20"
+                    rows="5" cols="40"
                     ref={input => this.textInput = input}
                     aria-label={label}
                     placeholder ="Add note..."

@@ -1,6 +1,7 @@
 import React from 'react';
 import requiresLogin from './requires-login';
 import {Field, reduxForm, focus} from 'redux-form';
+import './search-page.css'
 
 
 export class SearchPage extends React.Component {
@@ -13,6 +14,8 @@ export class SearchPage extends React.Component {
 
     render() {   
         return (
+            <div className= "back-img">
+                <div className="transparent">
             <form className="js-search-form"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values))}> 
@@ -34,6 +37,8 @@ export class SearchPage extends React.Component {
                     search
                 </button>
             </form>
+            </div>
+            </div>
             
         );
     }

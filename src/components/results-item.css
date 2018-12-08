@@ -1,0 +1,110 @@
+article {
+    background: #eaf0f28f;
+    padding: 25px;
+    margin: 25px auto;
+    position: relative;
+    display: block;
+    line-height: 35px;
+}
+
+.item-description p {
+    padding: 0;
+}
+
+
+/* .description {
+    line-height: 1.5em;
+    width: 80%;
+    margin: auto;
+} */
+
+.tag {
+    font-weight: 700;
+}
+
+h3 {
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    font-weight: 900;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.picture {
+    margin: 0 auto 15px;
+    position: relative;
+    background: white;
+}
+
+article img {
+    width: 80%;
+    height: auto;
+    margin: 10px;
+}
+
+.picture span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 15px 30px;
+    background: #3c3c3c;
+    color: lightgray;
+    z-index: 1;
+}
+
+article button,
+article a,
+.add-form button {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 80%;
+    max-width: 520px;
+    padding: 10px 0;
+    background: #fff;
+    color: darkolivegreen;
+    border: 1px solid lightgray;
+    margin: 0 auto;
+    line-height: 1.4em;
+    text-decoration: none;
+}
+
+article button {
+    margin-top: 20px;
+}
+
+.add-button {
+    max-width: 520px;
+    margin: auto;
+}
+
+button:nth-child(3) {
+    margin-top: 0;
+}
+
+article button:hover,
+article a:hover,
+.add-form button:hover {
+    background-color: #fff;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    font-size: 90%;
+    text-decoration: none;
+    box-shadow: 2px 2px 2px #3c3c3c;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.add-form button,
+.add-item {
+    border-radius: 0;
+    width: 100%;
+}
+
+textarea {
+    padding: 4px 8px;
+    font-size: 16px;
+}
+
+@media all and (max-width: 470px) {
+    textarea {
+        font-size: 12px;
+    }
+}

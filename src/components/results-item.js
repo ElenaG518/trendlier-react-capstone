@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import {addItem} from "../actions/product-data";
 import AddForm from './add-form';
+import './results-item.css'
 
 export class ResultsItem extends Component {
     
@@ -27,7 +28,7 @@ export class ResultsItem extends Component {
    render() {
         
         return (
-            <div>
+            <article>
                 <div className="picture">
                     <img src={`${this.props.images.standard}`} alt={`${this.props.names.title}`} />
                     <span>{this.props.rank}</span>
@@ -46,7 +47,7 @@ export class ResultsItem extends Component {
                     purchase</a> 
                     
                 </div>
-            </div>
+            </article>
         )
     }
 }

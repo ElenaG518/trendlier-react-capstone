@@ -37,16 +37,17 @@ export const fetchWishlistError = error => ({
     type: FETCH_WISHLIST_ERROR,
     error
 });
-export const DELETE_ITEM_FROM_LOCAL = 'DELETE_ITEM_FROM_LOCAL';
-export const deteleItemFromLocal = deletedLocalItem => ({
-    type: DELETE_ITEM_FROM_LOCAL,
-    deletedLocalItem
+export const CLEAR_FETCHED_DATA = 'CLEAR_FETCHED_DATA';
+export const clearFetchedData = fetchedData => ({
+    type: CLEAR_FETCHED_DATA,
+    fetchedData
 });
 export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
 export const deleteItemError = error => ({
     type: DELETE_ITEM_ERROR,
     error
 });
+
 
 export const fetchData = category => (dispatch, getState) => {
     
@@ -168,7 +169,7 @@ export const deleteWishlistItem = id => (dispatch, getState) => {
     .then(res => normalizeResponseErrors(res))
     .then(() =>
         {   console.log("success");
-            dispatch(deteleItemFromLocal());
+            
         }
     )
     .catch(err => {
