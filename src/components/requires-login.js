@@ -7,6 +7,7 @@ export default () => Component => {
         const {authenticating, loggedIn, error, ...passThroughProps} = props;
         if (authenticating) {
             return <div>Logging in...</div>;
+        //  return console.log("logging in");
         } else if (!loggedIn || error) {
             return <Redirect to="/" />;
         }

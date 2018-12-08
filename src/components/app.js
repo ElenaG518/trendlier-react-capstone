@@ -5,7 +5,7 @@ import {Route, withRouter} from 'react-router-dom';
 import LandingPage from './landing-page';
 import HeaderBar from './header-bar';
 import LoginForm  from './login-form';
-import RegistrationForm  from './registration-form';
+import RegistrationPage  from './registration-page';
 import SearchPage  from './search-page';
 import ResultsPage from './results-page';
 import WishList from './wishlist';
@@ -51,7 +51,7 @@ export class App extends Component {
                 <HeaderBar title="Trendlier"/>
                 <Route exact path="/" component={LandingPage} />
                 <Route exact path="/auth/login" component={LoginForm} />
-                <Route exact path="/auth/signup" component={RegistrationForm} />
+                <Route exact path="/auth/signup" component={RegistrationPage} />
                 <Route exact path="/search-page" component={SearchPage}/>
                 <Route exact path="/results-page/:id" component={ResultsPage} />
                 <Route exact path="/wishlist/:username" component={WishList} />

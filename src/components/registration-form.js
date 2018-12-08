@@ -1,6 +1,5 @@
 import React from 'react';
 import {Field, reduxForm, focus} from 'redux-form';
-import { Link } from "react-router-dom";
 import {registerUser} from '../actions/users';
 import {login} from '../actions/auth';
 import Input from './input';
@@ -15,21 +14,19 @@ export class RegistrationForm extends React.Component {
         const user = {username, password, firstName, lastName};
         return this.props
             .dispatch(registerUser(user))
-            .then(() => this.props.dispatch(login(username, password)))
-            .then(() => this.props.history.push(`/search-page`));
+            .then(() => this.props.dispatch(login(username, password)));
+            // .then(() => this.props.history.push(`/search-page`));
     }
 
     render() {
         
         return (
-            <section className="signup">
+            
             <form
                 className="signup-form"
                 onSubmit={this.props.handleSubmit(values =>
                     this.onSubmit(values)
                 )}>
-                <fieldset>
-                    <legend>Sign Up</legend>
                 <label htmlFor="firstName">First name</label>
                 <Field component={Input} type="text" name="firstName"  placeholder="First name" />
                 <label htmlFor="lastName">Last name</label>
@@ -63,10 +60,8 @@ export class RegistrationForm extends React.Component {
                     disabled={this.props.pristine || this.props.submitting}>
                     Register
                 </button>
-                </fieldset>
             </form>
-            <Link to="/auth/login">Sign in</Link>
-            </section>
+            
         );
     }
 }

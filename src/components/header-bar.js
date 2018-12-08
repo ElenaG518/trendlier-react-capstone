@@ -27,12 +27,15 @@ export class HeaderBar extends React.Component {
             <div className="top-menu">
                 <h1 className="logo">{this.props.title}</h1>
                 <nav className="top-navigation" role="navigation">
-                {/* <div className="content "> */}
-                    <ul className="links "><li><Link to={`/wishlist/${this.props.username}`} id="wishlist">wishlist</Link></li>
+                <div className="content ">
+                    <ul className="links ">
+                        <li><Link to={`/wishlist/${this.props.username}`} id="wishlist">wishlist</Link></li>
                         <li><Link to="/search-page" id="search-page" onClick={() => this.newSearch()}>search</Link></li>
                         <li><button id="logout" onClick={() => this.logOut()}>log out</button></li>
                     </ul>
+                </div>
                 </nav>
+                
             </div>
         );
     }

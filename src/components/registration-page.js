@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import { Redirect} from 'react-router-dom';
+import { Link, Redirect} from 'react-router-dom';
+import './registration-page.css';
 
 import RegistrationForm from './registration-form';
 
@@ -11,8 +12,13 @@ export function RegistrationPage(props) {
         return <Redirect to="/search-page" />;
     }
     return (
-        <div className="home">
+        <div className="back-img">
+        <div className="transparent">
+           <h2>Register for Trendlier</h2>
            <RegistrationForm />
+           
+           <Link to="/auth/login">Sign in</Link>
+        </div>
         </div>
     );
 }
