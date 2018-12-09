@@ -5,6 +5,8 @@ import Spinner from 'react-spinkit';
 import { fetchData, clearFetchedData } from "../actions/product-data";
 import ResultsItem from './results-item';
 import requiresLogin from './requires-login';
+import Footer from './footer'
+
 import './results-page.css'
 
 class ResultsPage extends React.Component {    
@@ -52,12 +54,15 @@ class ResultsPage extends React.Component {
             });
  
             return (
-                <div className="results">
+                <div>
+                <section className="results">
                 <h2>Trending Items</h2>
                 <div className="flex">   
                 {error}
                 {displayResult}
                 </div>
+                </section>
+                <Footer /> 
                 </div>
             );
         }

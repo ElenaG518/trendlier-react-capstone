@@ -4,6 +4,12 @@
     padding: 0;
 }
 
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 body {
     font-family: 'Chakra Petch', sans-serif;
 }
@@ -107,13 +113,12 @@ a {
     text-align: center;
     margin: 0 auto 50px;
     display: block;
-    /* text-decoration: none; */
     color: #ffeda4;
 }
 
 a:hover {
     color: lightgrey;
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
 @media all and (max-width: 620px) {

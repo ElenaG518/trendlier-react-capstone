@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {connect} from 'react-redux';
 import requiresLogin from './requires-login';
+import './footer.css';
 
 export class Footer extends Component {
 
@@ -10,9 +11,7 @@ export class Footer extends Component {
         
         return (
           <footer>
-            <div className="row">
-            <div className="col span-1-of-2">
-                <ul className="social-links">
+                 <ul className="social-links">
                     <li>
                         <a href="https://www.facebook.com/ElenaG518" rel="noopener noreferrer" target="_blank">
                             <ion-icon id="ion-social-facebook" name="logo-facebook"></ion-icon>
@@ -29,15 +28,13 @@ export class Footer extends Component {
                         </a>
                     </li>
                 </ul>
-            </div>
-        </div>
+            
         <div className="row">
             <p>
                 &copy; 2018 Elena Granados
             </p>
             <p>
-                {/* built with
-                <ion-icon id="heart-icon" name="heart"></ion-icon> &amp; <ion-icon id="musical-note" name="musical-note"></ion-icon>NoVa, */}
+                
                  December 2018
             </p>
         </div>

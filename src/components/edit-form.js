@@ -27,10 +27,10 @@ export default class EditForm extends React.Component {
 
     render() {
         if (!this.state.editing) {
-            const text = `Edit wishlist note`;
+            const text = `edit wishlist note`;
             return (
-                <div className="add-button">
-                <button onClick={() => this.setEditing(true)}>
+                <div className="edit-button">
+                <button className="edit-item" onClick={() => this.setEditing(true)}>
                     {text}
                 </button>    
                 </div>
@@ -38,14 +38,14 @@ export default class EditForm extends React.Component {
         }
         const label = `Edit wishlist item note`;
         return (
-            <form className="card add-form" onSubmit={(e) => this.onSubmit(e)}>
+            <form className="edit-form" onSubmit={(e) => this.onSubmit(e)}>
            
                 <textarea
-                    name="notes"
-                    id="notes"
-                    rows="5" cols="20"
-                    defaultValue = {`${this.props.notes}`}
                     type="text"
+                    id="notes"
+                    rows="5" cols="40"
+                    defaultValue = {`${this.props.notes}`}
+                    
                     ref={input => this.textInput = input}
                     aria-label={label}
                 />
@@ -53,7 +53,7 @@ export default class EditForm extends React.Component {
             
                 <button>submit</button>
                 <button type="button" onClick={() => this.setEditing(false)}>
-                    Cancel
+                    cancel
                 </button>
             </form>
         );

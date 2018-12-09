@@ -13,12 +13,10 @@
 
 .top-navigation {
     display: inline-block;
-    width: 80%;
-    height: 30px;
+    /* width: 75%; */
 }
 
 .content {
-    width: 80%;
     margin: 0 auto;
 }
 
@@ -41,6 +39,11 @@
     margin: 0;
 }
 
+.top-navigation button:hover {
+    color: lightgrey;
+    font-size: 1.1em;
+}
+
 @media all and (max-width: 620px) {
     .top-navigation,
     .content {
@@ -51,5 +54,8 @@
     }
     .top-navigation button {
         margin-right: 15px;
+    }
+    .content {
+        margin: 0;
     }
 }

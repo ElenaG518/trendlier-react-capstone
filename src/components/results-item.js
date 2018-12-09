@@ -8,8 +8,14 @@ export class ResultsItem extends Component {
     
     addListItem(text) {
         console.log(text);
+        let itemImg=null;
+        if (this.props.images.standard===null) {
+            itemImg='./assets/no-image.png';
+        } else {
+            itemImg = this.props.images.standard;
+        };
         const data={
-                    image:this.props.images.standard,
+                    image:itemImg,
                     name: this.props.names.title,
                     purchaseUrl: this.props.links.web,
                     regularPrice: this.props.prices.regular,
@@ -26,11 +32,19 @@ export class ResultsItem extends Component {
     }
 
    render() {
-        
+    let itemImg=null;
+        if (this.props.images.standard==null) {
+            itemImg="../src/assets/no-image.png";
+        } else {
+            itemImg = this.props.images.standard;
+        };    
+
         return (
             <article>
                 <div className="picture">
-                    <img src={`${this.props.images.standard}`} alt={`${this.props.names.title}`} />
+                    <img src={`${itemImg}`}
+                    // {`${this.props.images.standard}`}
+                     alt={`${this.props.names.title}`} />
                     <span>{this.props.rank}</span>
                 </div>
                 <h3>{this.props.names.title}</h3>

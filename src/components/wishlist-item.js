@@ -31,7 +31,7 @@ export class WishlistItem extends Component {
     render() {
         
             return (
-                <div>                
+                <article>              
                     <div className="picture">
                         <img src={`${this.props.image}`} alt={`${this.props.name}`} />
                     </div>
@@ -42,15 +42,17 @@ export class WishlistItem extends Component {
                         <p><span className="tag">Average Rating:  </span>{this.props.rating}</p>
                         <p><span className="tag">Number of Reviews:   </span>{this.props.reviewsCount}</p>
                         <p><span className="tag">Description:   </span>{this.props.description}</p>
-                        <p><span className="tag">notes:   </span>{this.props.notes}</p>
-                    </div>
+                        <p><span className="tag">Notes:   </span>{this.props.notes}</p>
+                    
                         <EditForm type="wishlistItem"
                          onEdit={text => this.editListItem(text)}
                          {...this.props}
                          />
-                        <li><a href={`${this.props.purchaseUrl}`} target="_blank" rel="noopener noreferrer" className="purchase">purchase</a></li>
-                        <li><button className="delete-item" onClick={e => this.onDeleteClick(e)}>delete item</button></li>
-                </div>
+                        <button className="delete-item" onClick={e => this.onDeleteClick(e)}>delete item</button> 
+                        <a href={`${this.props.purchaseUrl}`} target="_blank" rel="noopener noreferrer" className="purchase">purchase</a>
+                        
+                    </div>
+                </article>
             )    
         }
 }    
