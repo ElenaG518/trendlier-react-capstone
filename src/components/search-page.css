@@ -17,7 +17,7 @@
 }
 
 .js-search-form {
-    padding-top: 50px;
+    padding-top: 250px;
     margin: 0 auto;
 }
 
@@ -29,4 +29,10 @@ select {
 
 button {
     margin-top: 40px;
+}
+
+@media all and (max-width: 620px) {
+    .js-search-form {
+        width: 300px;
+    }
 }

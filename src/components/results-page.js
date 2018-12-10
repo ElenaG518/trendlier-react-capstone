@@ -5,7 +5,7 @@ import Spinner from 'react-spinkit';
 import { fetchData, clearFetchedData } from "../actions/product-data";
 import ResultsItem from './results-item';
 import requiresLogin from './requires-login';
-import Footer from './footer'
+import Footer from './footer';
 
 import './results-page.css'
 

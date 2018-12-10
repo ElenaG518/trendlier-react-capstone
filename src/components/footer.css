@@ -7,6 +7,12 @@
         border-top: 3px inset darkred;
         border-bottom: 3px outset darkred;
         font-size: 80%;
+        display: relative;
+    }
+    
+    .fixed {
+        display: absolute;
+        bottom: 0;
     }
     
     .social-links li {

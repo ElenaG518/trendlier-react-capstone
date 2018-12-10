@@ -5,11 +5,16 @@ import {Redirect} from 'react-router-dom';
 export default () => Component => {
     function RequiresLogin(props) {
         const {authenticating, loggedIn, error, ...passThroughProps} = props;
-        if (authenticating) {
-            return <div>Logging in...</div>;
+        // if (authenticating) {
+        //     return <div className="">Logging in...</div>;
         //  return console.log("logging in");
-        } else if (!loggedIn || error) {
+        // } else
+         if ( error) {
+             window.alert(error.message);
+             
             return <Redirect to="/" />;
+        } else if (!loggedIn ) {
+            return <Redirect to="/"/>;
         }
 
         return <Component {...passThroughProps} />;

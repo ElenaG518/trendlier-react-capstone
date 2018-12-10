@@ -7,10 +7,12 @@ export class Footer extends Component {
 
     render() {
 
+
         // Only render the footer if we are logged in
         
         return (
           <footer>
+              <div className="fixed">
                  <ul className="social-links">
                     <li>
                         <a href="https://www.facebook.com/ElenaG518" rel="noopener noreferrer" target="_blank">
@@ -37,6 +39,7 @@ export class Footer extends Component {
                 
                  December 2018
             </p>
+        </div>
         </div>
        </footer>
         )

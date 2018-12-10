@@ -24,9 +24,10 @@ export function LandingPage(props)  {
                     <p>Trendlier is for those who like to keep on top of the latest gadgets and trends. </p>
                     <p>Get a list of the top ten hottest items in each category, listed in descending order based on popularity.</p>
                     <p>Purchase your favorites or save them in your wishlist.</p>
+                    <div className="button-wrapper">
                     <Link to="/auth/login">Sign In</Link>
                     <Link to="/auth/signup">Sign Up</Link>
-
+                    </div>
                 </header>
             </section>
         </div>

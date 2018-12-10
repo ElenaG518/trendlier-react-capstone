@@ -3,14 +3,14 @@ import { connect } from "react-redux";
 import {addItem} from "../actions/product-data";
 import AddForm from './add-form';
 import './results-item.css'
-
+import noImage from '../assets/no-image.png';
 export class ResultsItem extends Component {
     
     addListItem(text) {
         console.log(text);
         let itemImg=null;
         if (this.props.images.standard===null) {
-            itemImg='./assets/no-image.png';
+            itemImg=noImage;
         } else {
             itemImg = this.props.images.standard;
         };
@@ -34,9 +34,10 @@ export class ResultsItem extends Component {
    render() {
     let itemImg=null;
         if (this.props.images.standard==null) {
-            itemImg="../src/assets/no-image.png";
+            itemImg=noImage;
         } else {
-            itemImg = this.props.images.standard;
+            itemImg=noImage;
+            // itemImg = this.props.images.standard;
         };    
 
         return (

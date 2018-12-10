@@ -4,17 +4,12 @@
     padding: 0;
 }
 
-*,
-*:before,
-*:after {
-    box-sizing: inherit;
-}
-
 body {
     font-family: 'Chakra Petch', sans-serif;
 }
 
 .back-img {
+    overflow: auto;
     margin: 0;
     padding: 0;
     width: 100%;
@@ -27,9 +22,15 @@ body {
 }
 
 .transparent {
+    overflow: auto;
     background: #141920c4;
     height: 100%;
     width: 100%;
+}
+
+.button-wrapper {
+    display: flex;
+    justify-content: center;
 }
 
 header {
@@ -62,6 +63,7 @@ p {
     color: #ffeda4;
     background: transparent;
     font-family: 'Chakra Petch', sans-serif;
+    width: 80px;
 }
 
 .intro a:hover {
