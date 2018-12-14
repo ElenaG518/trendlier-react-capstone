@@ -28,7 +28,7 @@ export class LoginForm extends React.Component {
         return (
             <div className="back-img">
             <div className="transparent">
-            <h2>Sign In</h2>
+            <h2 className="auth">Sign In</h2>
                 <form
                     className="login-form"
                     onSubmit={this.props.handleSubmit(values =>
