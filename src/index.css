@@ -59,11 +59,11 @@ p {
     text-decoration: none;
     border: 1px solid silver;
     border-radius: 5px;
-    padding: 10px 50px;
     color: #ffeda4;
     background: transparent;
     font-family: 'Chakra Petch', sans-serif;
-    width: 80px;
+    padding: 10px 40px;
+    /* width: 80px; */
 }
 
 .intro a:hover {
@@ -123,8 +123,45 @@ a:hover {
     font-size: 1.1em;
 }
 
+h2 {
+    /* color: #3c3c3ce6; */
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: 900;
+    padding-top: 35px;
+}
+
+.separate {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.message {
+    margin-top: 40%;
+}
+
+.note {
+    margin: 20px 0;
+    padding: 0 20px;
+    background-color: #e2e6ec;
+}
+
 @media all and (max-width: 620px) {
     header h1 {
         padding-top: 50px;
+    }
+    body,
+    p,
+    button,
+    form-button,
+    a {
+        font-size: 16px;
+    }
+    .intro a {
+        font-size: 16px;
+        padding: 10px 20px;
+        width: 80px;
     }
 }

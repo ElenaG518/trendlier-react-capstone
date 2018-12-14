@@ -42,7 +42,7 @@ export class WishlistItem extends Component {
                         <p><span className="tag">Average Rating:  </span>{this.props.rating}</p>
                         <p><span className="tag">Number of Reviews:   </span>{this.props.reviewsCount}</p>
                         <p><span className="tag">Description:   </span>{this.props.description}</p>
-                        <p><span className="tag">Notes:   </span>{this.props.notes}</p>
+                        <p className="note"><span className="tag">Notes:   </span>{this.props.notes}</p>
                     
                         <EditForm type="wishlistItem"
                          onEdit={text => this.editListItem(text)}

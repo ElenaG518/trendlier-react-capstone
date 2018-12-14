@@ -107,4 +107,13 @@ textarea {
     textarea {
         font-size: 12px;
     }
+    article img {
+        max-width: 90%;
+    }
+    .picture span {
+        padding: 5px 10px;
+    }
+    .picture {
+        width: 80%;
+    }
 }

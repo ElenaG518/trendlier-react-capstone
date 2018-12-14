@@ -48,7 +48,7 @@ class ResultsPage extends React.Component {
                 return (
                     <li key={index}>
                         <ResultsItem {...item}  />
-                        <hr id="divideLine" />
+                        
                     </li>
                     )
             });
@@ -57,7 +57,7 @@ class ResultsPage extends React.Component {
                 <div>
                 <section className="results">
                 <h2>Trending Items</h2>
-                <div className="flex">   
+                <div className="item">   
                 {error}
                 {displayResult}
                 </div>

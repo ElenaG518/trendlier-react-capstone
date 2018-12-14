@@ -36,16 +36,14 @@ export class ResultsItem extends Component {
         if (this.props.images.standard==null) {
             itemImg=noImage;
         } else {
-            itemImg=noImage;
-            // itemImg = this.props.images.standard;
+            itemImg = this.props.images.standard;
         };    
 
         return (
             <article>
                 <div className="picture">
                     <img src={`${itemImg}`}
-                    // {`${this.props.images.standard}`}
-                     alt={`${this.props.names.title}`} />
+                    alt={`${this.props.names.title}`} />
                     <span>{this.props.rank}</span>
                 </div>
                 <h3>{this.props.names.title}</h3>

@@ -28,7 +28,7 @@ export default class AddForm extends React.Component {
 
     render() {
         if (!this.state.adding) {
-            const text = `add item to wishlist`;
+            const text = `add note`;
             return (
                 <div className="add-button">
                 <button className="add-item" onClick={() => this.setAdding(true)}>
@@ -47,7 +47,7 @@ export default class AddForm extends React.Component {
                     aria-label={label}
                     placeholder ="Add note..."
                 />
-                <button>add item</button>
+                <button>add item to wishlist</button>
                 <button type="button" onClick={() => this.setAdding(false)}>
                     cancel
                 </button>

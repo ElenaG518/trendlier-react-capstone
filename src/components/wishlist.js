@@ -43,29 +43,35 @@ class WishList extends Component {
         } else {
             const data = this.props.wishlist.products;
             let displayResults;
-            let noItemString;
-        if (data.length) {
-            displayResults = data.map((item, index) => {
-                return ( 
-                <li key={index}>
-                    <WishlistItem {...item} />
-                </li>
-                )
-            });
-        } else {
-            noItemString = "No Items have been added. Please add a few";
-        }
+            console.log(data.length);
+            if (data.length) {
+                displayResults = data.map((item, index) => {
+                    return ( 
+                    <li key={index}>
+                        <WishlistItem {...item} />
+                    </li>
+                    )
+                });
+            } 
+        
             return (
-                <div>
+                <div className={data.length ? "" : "separate"}>
                 <section className="wish-list">
-                    <h2>My Wishlist</h2>
+                    <h2 >My Wishlist</h2>
+                   
                     {error}
                     
-                    <ul>{displayResults}</ul>
-                    <div>{noItemString}</div>
-    
+                    {
+                        data.length ? (
+                            <ul>{displayResults}</ul>
+                        ) : (
+                            <div className="message">No items have been added.</div>
+                        )
+                    }
+                    
                 </section>
-                <Footer />    
+                <Footer /> 
+               
                 </div>
             )
         }
