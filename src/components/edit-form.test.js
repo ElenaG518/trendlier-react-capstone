@@ -37,9 +37,9 @@ describe('<EditForm />', () => {
         expect(callback).toHaveBeenCalledWith(value);
     });
 
-    it('Should not fire onAdd if the input is empty', () => {
+    it('Should not fire onEdit if the input is empty', () => {
         const callback = jest.fn();
-        const wrapper = mount(<EditForm onAdd={callback} />);
+        const wrapper = mount(<EditForm onEdit={callback} />);
         wrapper.instance().setEditing(true);
         wrapper.simulate('submit');
         expect(callback).not.toHaveBeenCalled();
