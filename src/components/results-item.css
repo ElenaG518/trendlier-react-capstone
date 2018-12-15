@@ -24,7 +24,8 @@ h3 {
 }
 
 .picture {
-    width: 60%;
+    text-align: center;
+    /* width: 60%; */
     height: 60%;
     margin: 0 auto 15px;
     position: relative;
@@ -33,7 +34,7 @@ h3 {
 
 article img {
     max-width: 50%;
-    max-height: 420px;
+    max-height: 220px;
     margin: 10px;
 }
 
