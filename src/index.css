@@ -151,6 +151,10 @@ h2 {
     background-color: #e2e6ec;
 }
 
+p:last-of-type {
+    padding-bottom: 100px;
+}
+
 @media all and (max-width: 620px) {
     header h1 {
         padding-top: 50px;

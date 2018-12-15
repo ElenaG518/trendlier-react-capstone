@@ -12,7 +12,7 @@ import WishList from './wishlist';
 
 import {refreshAuthToken} from '../actions/auth';
 
-// import './app.css';
+
 
 export class App extends Component {
     componentDidUpdate(prevProps) {

@@ -177,5 +177,4 @@ export const deleteWishlistItem = id => (dispatch, getState) => {
     });
 }    
 
-    // send to server as doing
-    // dispatch to delete from local 
+    

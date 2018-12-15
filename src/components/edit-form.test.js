@@ -8,16 +8,16 @@ describe('<EditForm />', () => {
         shallow(<EditForm />);
     });
 
-    it('Renders the add button initially', () => {
+    it('Renders the edit button initially', () => {
         const wrapper = shallow(<EditForm />);
-        expect(wrapper.hasClass('add-button')).toEqual(true);
+        expect(wrapper.hasClass('edit-button')).toEqual(true);
     });
 
-    it('Should render the add form when editing', () => {
+    it('Should render the edit form when editing', () => {
         const wrapper = shallow(<EditForm />);
         wrapper.instance().setEditing(true);
         wrapper.update();
-        expect(wrapper.hasClass('add-form')).toEqual(true);
+        expect(wrapper.hasClass('edit-form')).toEqual(true);
     });
 
     it('Should switch to editing when the add button is clicked', () => {
