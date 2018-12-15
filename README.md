@@ -5,13 +5,16 @@ live version:   https://trendlier-client-capstone.herokuapp.com/
 
 ## Screenshots
 
-Home Page View | Sign Up Page
+Home Page View | Registration Page
 :-------------------------:|:-------------------------:
-![Home Page](https://github.com/ElenaG518/trendlier-server-capstone/blob/master/github-images/intro.jpg)  |  ![Sign Up Page](https://github.com/ElenaG518/trendlier-server-capstone/blob/master/github-images/signup.jpg)
+![Home Page](https://github.com/ElenaG518/trendlier-react-capstone/blob/master/github-images/landing-page.png)  |  ![Registration Page](https://github.com/ElenaG518/trendlier-react-capstone/blob/master/github-images/registration-page.png)
+Sign In | Search Page
+![Sign In](https://github.com/ElenaG518/trendlier-react-capstone/blob/master/github-images/signin-page.png)    | ![Search Page](https://github.com/ElenaG518/trendlier-react-capstone/blob/master/github-images/search-page.png)
+
 Results | Add Entry
-![Results](https://github.com/ElenaG518/trendlier-server-capstone/blob/master/github-images/results-page.jpg) |  ![Add Item](https://github.com/ElenaG518/trendlier-server-capstone/blob/master/github-images/itemdetails.jpg) 
+![Results](https://github.com/ElenaG518/trendlier-react-capstone/blob/master/github-images/results-page.png) |  ![Add Item](https://github.com/ElenaG518/trendlier-react-capstone/blob/master/github-images/add-note-item-to-wishlist.png) 
 Wish List | Edit Item
-![Wishlist](https://github.com/ElenaG518/trendlier-server-capstone/blob/master/github-images/wishlistscreen.jpg) |  ![Edit Item](https://github.com/ElenaG518/trendlier-server-capstone/blob/master/github-images/edit-item.jpg) 
+![Wishlist](https://github.com/ElenaG518/trendlier-react-capstone/blob/master/github-images/wishist%20item.png) |  ![Edit Item](https://github.com/ElenaG518/trendlier-react-capstone/blob/master/github-images/edit-item.png) 
 
 
 ### UI Flow
