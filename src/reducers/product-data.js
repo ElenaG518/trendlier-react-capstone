@@ -25,12 +25,12 @@ export default function reducer (state = initialState, action) {
         return Object.assign({}, state, {
         fetchedData: action.fetchedData,
             error: null,
-            loading: true
+            loading: false
         });
     } else if (action.type === FETCH_CATEGORY_DATA_ERROR) {
         return Object.assign({}, state, {
             error: action.error,
-            loading: true
+            loading: false
         });
     } else if (action.type === SET_CATEGORY) {
         return Object.assign({}, state, {
@@ -54,10 +54,12 @@ export default function reducer (state = initialState, action) {
     } else if (action.type === FETCH_WISHLIST_SUCCESS) {
         return Object.assign({}, state, {
             wishlist: action.wishlist,
+            loading: false,
             error: null
         });
     } else if (action.type === FETCH_WISHLIST_ERROR) {
         return Object.assign({}, state, {
+            loading: false,
             error: action.error
         });
     } else if (action.type === CLEAR_FETCHED_DATA) {

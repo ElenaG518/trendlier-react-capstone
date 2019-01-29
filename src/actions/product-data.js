@@ -14,8 +14,7 @@ export const fetchCategoryData = () => ({
 export const FETCH_CATEGORY_DATA_SUCCESS = 'FETCH_CATEGORY_DATA_SUCCESS';
 export const fetchCategoryDataSuccess = fetchedData => ({
     type: FETCH_CATEGORY_DATA_SUCCESS,
-    fetchedData,
-    loading: false
+    fetchedData
 });
 
 export const FETCH_CATEGORY_DATA_ERROR = 'FETCH_CATEGORY_DATA_ERROR';
@@ -41,14 +40,12 @@ export const fetchWishlistData = () => ({
 export const FETCH_WISHLIST_SUCCESS = 'FETCH_WISHLIST_SUCCESS';
 export const fetchWishlistSuccess = wishlist => ({
     type: FETCH_WISHLIST_SUCCESS,
-    wishlist,
-    loading: false
+    wishlist
 });
 export const FETCH_WISHLIST_ERROR = 'FETCH_WISHLIST_ERROR';
 export const fetchWishlistError = error => ({
     type: FETCH_WISHLIST_ERROR,
-    error,
-    loading: false
+    error
 });
 export const CLEAR_FETCHED_DATA = 'CLEAR_FETCHED_DATA';
 export const clearFetchedData = fetchedData => ({
