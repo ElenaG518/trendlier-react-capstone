@@ -26,7 +26,7 @@ class WishList extends Component {
             );
         };
 
-        if(!this.props.wishlist){
+        if(this.props.loading){
             return (
             <div>
                 <h2 className="mylist-title">My Wishlist</h2>
@@ -79,6 +79,7 @@ class WishList extends Component {
 }
 
 const mapStateToProps = state => ({
+    loading: state.trendlier.loading,
     wishlist: state.trendlier.wishlist,
     error: state.trendlier.error
 });

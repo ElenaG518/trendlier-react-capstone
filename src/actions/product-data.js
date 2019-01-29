@@ -33,15 +33,22 @@ export const addWishlistItemError = error => ({
     type: ADD_WISHLIST_ITEM_ERROR,
     error
 });
+export const FETCH_WISHLIST_DATA = 'FETCH_WISHLIST_DATA';
+export const fetchWishlistData = () => ({
+    type: FETCH_WISHLIST_SUCCESS,
+    loading: true
+});
 export const FETCH_WISHLIST_SUCCESS = 'FETCH_WISHLIST_SUCCESS';
 export const fetchWishlistSuccess = wishlist => ({
     type: FETCH_WISHLIST_SUCCESS,
-    wishlist
+    wishlist,
+    loading: false
 });
 export const FETCH_WISHLIST_ERROR = 'FETCH_WISHLIST_ERROR';
 export const fetchWishlistError = error => ({
     type: FETCH_WISHLIST_ERROR,
-    error
+    error,
+    loading: false
 });
 export const CLEAR_FETCHED_DATA = 'CLEAR_FETCHED_DATA';
 export const clearFetchedData = fetchedData => ({
@@ -118,7 +125,7 @@ export const addItem = item => (dispatch, getState) => {
     }
 
     export const fetchWishlist = user => (dispatch, getState) => {
-    
+        dispatch(fetchWishlistData());
         console.log("fetchWishlist", user);
         const authToken = getState().auth.authToken;
         return fetch(`${API_BASE_URL}/products/${user}`, {

@@ -4,6 +4,7 @@ import {
     SET_CATEGORY, 
     ADD_WISHLIST_ITEM_SUCCESS,
     ADD_WISHLIST_ITEM_ERROR,
+    FETCH_WISHLIST_DATA,
     FETCH_WISHLIST_SUCCESS,
     FETCH_WISHLIST_ERROR,
     CLEAR_FETCHED_DATA,
@@ -40,13 +41,16 @@ export default function reducer (state = initialState, action) {
         return Object.assign({}, state, {
             wishlistItem: action.wishlistItem,
             error: null
-        });
-        
+        });        
     } else if (action.type === ADD_WISHLIST_ITEM_ERROR) {
         return Object.assign({}, state, {
             error: action.error
         });
-        
+    } else if (action.type === FETCH_WISHLIST_DATA) {
+        return Object.assign({}, state, {
+            loading: action.loading
+            
+        });
     } else if (action.type === FETCH_WISHLIST_SUCCESS) {
         return Object.assign({}, state, {
             wishlist: action.wishlist,
