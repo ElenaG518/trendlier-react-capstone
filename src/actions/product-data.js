@@ -6,16 +6,22 @@ export const setCategory = category => ({
     type: SET_CATEGORY,
     category
 });
+export const FETCH_CATEGORY_DATA = 'FETCH_CATEGORY_DATA';
+export const fetchCategoryData = () => ({
+    type: FETCH_CATEGORY_DATA,
+    loading: true
+})
 export const FETCH_CATEGORY_DATA_SUCCESS = 'FETCH_CATEGORY_DATA_SUCCESS';
 export const fetchCategoryDataSuccess = fetchedData => ({
     type: FETCH_CATEGORY_DATA_SUCCESS,
-    fetchedData
+    fetchedData,
+    loading: false
 });
 
 export const FETCH_CATEGORY_DATA_ERROR = 'FETCH_CATEGORY_DATA_ERROR';
 export const fetchCategoryDataError = error => ({
     type: FETCH_CATEGORY_DATA_ERROR,
-    error
+    error, loading: false
 });
 export const ADD_WISHLIST_ITEM_SUCCESS = 'ADD_WISHLIST_ITEM_SUCCESS';
 export const addWishlistItemSuccess = wishlistItem => ({
@@ -51,7 +57,7 @@ export const deleteItemError = error => ({
 
 export const fetchData = category => (dispatch, getState) => {
     
-    console.log("fetchdata", category);
+    dispatch(fetchCategoryData());
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/bestbuy/${category}`, {
         method: 'GET',

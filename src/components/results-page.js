@@ -25,9 +25,7 @@ class ResultsPage extends React.Component {
                     {this.props.error}
                 </div>
             );
-        };
-
-        if (!this.props.fetchedData) {
+        } else  if (this.props.loading) {
             return (
             <div >
                 <h2 className="section-title">results</h2>
@@ -71,6 +69,7 @@ class ResultsPage extends React.Component {
        
 const mapStateToProps = state => {
     return {
+        loading: state.trendlier.loading,
         fetchedData: state.trendlier.fetchedData, 
         error: state.trendlier.error,
         username: state.auth.currentUser.username
