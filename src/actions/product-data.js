@@ -63,6 +63,8 @@ export const fetchData = category => (dispatch, getState) => {
     
     dispatch(fetchCategoryData());
     const authToken = getState().auth.authToken;
+    console.log("fetchCategoryData called", category);
+    console.log("API ", `${API_BASE_URL}/bestbuy/${category}`);
     return fetch(`${API_BASE_URL}/bestbuy/${category}`, {
         method: 'GET',
         headers: {
@@ -124,6 +126,8 @@ export const addItem = item => (dispatch, getState) => {
     export const fetchWishlist = user => (dispatch, getState) => {
         dispatch(fetchWishlistData());
         console.log("fetchWishlist", user);
+        
+    console.log("API ", `${API_BASE_URL}/products/${user}`);
         const authToken = getState().auth.authToken;
         return fetch(`${API_BASE_URL}/products/${user}`, {
             method: 'GET',

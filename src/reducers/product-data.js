@@ -27,7 +27,7 @@ export default function reducer (state = initialState, action) {
         }); 
     } else if (action.type === FETCH_CATEGORY_DATA) {
         return Object.assign({}, state, {
-            loading: action.loading
+            loading: true
         });
     } else if (action.type === FETCH_CATEGORY_DATA_SUCCESS) {
         return Object.assign({}, state, {

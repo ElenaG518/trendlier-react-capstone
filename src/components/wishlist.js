@@ -12,8 +12,8 @@ class WishList extends Component {
     componentDidMount() {
         const {username} = this.props.match.params;
         console.log("username", username);
-        this.props.dispatch(fetchWishlist(username))
-        .then(()=>console.log("wishlist", this.props.wishlist.products));
+        this.props.dispatch(fetchWishlist(username));
+        // .then(()=>console.log("wishlist", this.props.wishlist.products));
     };
 
     render() {
@@ -40,34 +40,36 @@ class WishList extends Component {
             </div>
             
         	)
-        } else {
+        }
+         else {
             const data = this.props.wishlist.products;
-            let displayResults;
-            console.log(data.length);
-            if (data.length) {
-                displayResults = data.map((item, index) => {
-                    return ( 
-                    <li key={index}>
-                        <WishlistItem {...item} />
-                    </li>
-                    )
-                });
-            } 
+            // let displayResults;
+            console.log("data ", data, data.length);
+            // if (data.length) {
+            //     displayResults = data.map((item, index) => {
+            //         return ( 
+            //         <li key={index}>
+            //             <WishlistItem {...item} />
+            //         </li>
+            //         )
+            //     });
+            // } 
         
             return (
-                <div className={data.length ? "" : "separate"}>
+                <div>
+                {/* <div className={data.length ? "" : "separate"}>  */}
                 <section className="wish-list">
                     <h2 >My Wishlist</h2>
                    
                     {error}
                     
-                    {
+                    {/* {
                         data.length ? (
                             <ul>{displayResults}</ul>
                         ) : (
                             <div className="message">No items have been added.</div>
                         )
-                    }
+                    } */}
                     
                 </section>
                 <Footer /> 

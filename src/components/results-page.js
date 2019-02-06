@@ -39,7 +39,8 @@ class ResultsPage extends React.Component {
             </div>
          
             )
-        } else {
+        }
+         else {
             const results = this.props.fetchedData;
             console.log("results", results);
             const displayResult = results.map((item, index) => {
