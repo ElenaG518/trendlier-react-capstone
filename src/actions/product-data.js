@@ -20,7 +20,7 @@ export const fetchCategoryDataSuccess = fetchedData => ({
 export const FETCH_CATEGORY_DATA_ERROR = 'FETCH_CATEGORY_DATA_ERROR';
 export const fetchCategoryDataError = error => ({
     type: FETCH_CATEGORY_DATA_ERROR,
-    error, loading: false
+    error
 });
 export const ADD_WISHLIST_ITEM_SUCCESS = 'ADD_WISHLIST_ITEM_SUCCESS';
 export const addWishlistItemSuccess = wishlistItem => ({

@@ -21,9 +21,17 @@ const initialState = {
 };
 
 export default function reducer (state = initialState, action) {
-    if (action.type === FETCH_CATEGORY_DATA_SUCCESS) {
+    if (action.type === SET_CATEGORY) {
         return Object.assign({}, state, {
-        fetchedData: action.fetchedData,
+            category: action.category
+        }); 
+    } else if (action.type === FETCH_CATEGORY_DATA) {
+        return Object.assign({}, state, {
+            loading: action.loading
+        });
+    } else if (action.type === FETCH_CATEGORY_DATA_SUCCESS) {
+        return Object.assign({}, state, {
+            fetchedData: action.fetchedData,
             error: null,
             loading: false
         });
@@ -32,19 +40,15 @@ export default function reducer (state = initialState, action) {
             error: action.error,
             loading: false
         });
-    } else if (action.type === SET_CATEGORY) {
-        return Object.assign({}, state, {
-            category: action.category
-        });
-        
     } else if (action.type === ADD_WISHLIST_ITEM_SUCCESS) {
         return Object.assign({}, state, {
             wishlistItem: action.wishlistItem,
-            error: null
+            loading: false
         });        
     } else if (action.type === ADD_WISHLIST_ITEM_ERROR) {
         return Object.assign({}, state, {
-            error: action.error
+            error: action.error,
+            loading: false
         });
     } else if (action.type === FETCH_WISHLIST_DATA) {
         return Object.assign({}, state, {
@@ -66,10 +70,7 @@ export default function reducer (state = initialState, action) {
         return Object.assign({}, state, {
             fetchedData: action.fetchedData
         });
-    } else if (action.type === FETCH_CATEGORY_DATA) {
-        return Object.assign({}, state, {
-            loading: action.loading
-        });
+    
     }
          
     return state;
