@@ -17,7 +17,8 @@ const initialState = {
     fetchedData: null,
     error: null, 
     category: '',
-    loading: false
+    loading: false,
+    displayResults: false,
 };
 
 export default function reducer (state = initialState, action) {
@@ -33,7 +34,8 @@ export default function reducer (state = initialState, action) {
         return Object.assign({}, state, {
             fetchedData: action.fetchedData,
             error: null,
-            loading: false
+            loading: false,
+            displayResults: true,
         });
     } else if (action.type === FETCH_CATEGORY_DATA_ERROR) {
         return Object.assign({}, state, {
@@ -68,10 +70,12 @@ export default function reducer (state = initialState, action) {
         });
     } else if (action.type === CLEAR_FETCHED_DATA) {
         return Object.assign({}, state, {
-            fetchedData: action.fetchedData
+            fetchedData: action.fetchedData,
+            displayResults: false,
         });
     
     }
          
     return state;
 }    
+
