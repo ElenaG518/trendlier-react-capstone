@@ -9,11 +9,8 @@ import RegistrationPage  from './registration-page';
 import SearchPage  from './search-page';
 import ResultsPage from './results-page';
 import WishList from './wishlist';
-
+import IntroPage from "./intro-page";
 import {refreshAuthToken} from '../actions/auth';
-import { IntroPage } from "./intro-page";
-
-
 
 export class App extends Component {
     componentDidUpdate(prevProps) {

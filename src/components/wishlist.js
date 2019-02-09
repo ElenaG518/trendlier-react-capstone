@@ -26,7 +26,7 @@ class WishList extends Component {
             );
         };
 
-        if(this.props.loading){
+        if(!this.props.wishlist){
             return (
             <div>
                 <h2 className="mylist-title">My Wishlist</h2>
@@ -43,33 +43,33 @@ class WishList extends Component {
         }
          else {
             const data = this.props.wishlist.products;
-            // let displayResults;
+            let displayResults;
             console.log("data ", data, data.length);
-            // if (data.length) {
-            //     displayResults = data.map((item, index) => {
-            //         return ( 
-            //         <li key={index}>
-            //             <WishlistItem {...item} />
-            //         </li>
-            //         )
-            //     });
-            // } 
+            if (data.length) {
+                displayResults = data.map((item, index) => {
+                    return ( 
+                    <li key={index}>
+                        <WishlistItem {...item} />
+                    </li>
+                    )
+                });
+            } 
         
             return (
-                <div>
-                {/* <div className={data.length ? "" : "separate"}>  */}
+                
+                <div className={data.length ? "" : "separate"}> 
                 <section className="wish-list">
                     <h2 >My Wishlist</h2>
                    
                     {error}
                     
-                    {/* {
+                    {
                         data.length ? (
                             <ul>{displayResults}</ul>
                         ) : (
                             <div className="message">No items have been added.</div>
                         )
-                    } */}
+                    } 
                     
                 </section>
                 <Footer /> 
@@ -81,7 +81,7 @@ class WishList extends Component {
 }
 
 const mapStateToProps = state => ({
-    loading: state.trendlier.loading,
+    
     wishlist: state.trendlier.wishlist,
     error: state.trendlier.error
 });
