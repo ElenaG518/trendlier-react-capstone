@@ -6,6 +6,11 @@ export const setCategory = category => ({
     type: SET_CATEGORY,
     category
 });
+export const FETCH_CATEGORY_DATA = 'FETCH_CATEGORY_DATA';
+export const fetchCategoryData = () => ({
+    type: FETCH_CATEGORY_DATA,
+    loading: true
+})
 export const FETCH_CATEGORY_DATA_SUCCESS = 'FETCH_CATEGORY_DATA_SUCCESS';
 export const fetchCategoryDataSuccess = fetchedData => ({
     type: FETCH_CATEGORY_DATA_SUCCESS,
@@ -26,6 +31,11 @@ export const ADD_WISHLIST_ITEM_ERROR = 'ADD_WISHLIST_ITEM_ERROR';
 export const addWishlistItemError = error => ({
     type: ADD_WISHLIST_ITEM_ERROR,
     error
+});
+export const FETCH_WISHLIST_DATA = 'FETCH_WISHLIST_DATA';
+export const fetchWishlistData = () => ({
+    type: FETCH_WISHLIST_SUCCESS,
+    loading: true
 });
 export const FETCH_WISHLIST_SUCCESS = 'FETCH_WISHLIST_SUCCESS';
 export const fetchWishlistSuccess = wishlist => ({
@@ -51,8 +61,10 @@ export const deleteItemError = error => ({
 
 export const fetchData = category => (dispatch, getState) => {
     
-    console.log("fetchdata", category);
+    dispatch(fetchCategoryData());
     const authToken = getState().auth.authToken;
+    console.log("fetchCategoryData called", category);
+    console.log("API ", `${API_BASE_URL}/bestbuy/${category}`);
     return fetch(`${API_BASE_URL}/bestbuy/${category}`, {
         method: 'GET',
         headers: {
@@ -112,8 +124,10 @@ export const addItem = item => (dispatch, getState) => {
     }
 
     export const fetchWishlist = user => (dispatch, getState) => {
-    
+        dispatch(fetchWishlistData());
         console.log("fetchWishlist", user);
+        
+    console.log("API ", `${API_BASE_URL}/products/${user}`);
         const authToken = getState().auth.authToken;
         return fetch(`${API_BASE_URL}/products/${user}`, {
             method: 'GET',
