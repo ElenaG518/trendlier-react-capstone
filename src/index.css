@@ -69,7 +69,7 @@ p {
 .intro a:hover {
     box-shadow: 2px 2px darkgray;
     color: lightgrey;
-    font-size: 1.1em;
+    background: dodgerblue;
 }
 
 .login-form,
@@ -108,7 +108,7 @@ form button {
 form button:hover {
     box-shadow: 2px 2px darkgray;
     color: lightgrey;
-    font-size: 1.1em;
+    background: dodgerblue;
 }
 
 a {
@@ -120,7 +120,6 @@ a {
 
 a:hover {
     color: lightgrey;
-    font-size: 1.1em;
 }
 
 h2 {

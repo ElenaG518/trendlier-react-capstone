@@ -9,7 +9,7 @@ import RegistrationPage  from './registration-page';
 import SearchPage  from './search-page';
 import ResultsPage from './results-page';
 import WishList from './wishlist';
-
+import IntroPage from "./intro-page";
 import {refreshAuthToken} from '../actions/auth';
 
 
@@ -54,7 +54,7 @@ export class App extends Component {
                 <Route exact path="/search-page" component={SearchPage}/>
                 <Route exact path="/results-page/:id" component={ResultsPage} />
                 <Route exact path="/wishlist/:username" component={WishList} />
-                       
+                <Route exact path="/intro-page" component={IntroPage} />       
             </div>
        );
     }
