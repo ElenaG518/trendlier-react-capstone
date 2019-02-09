@@ -14,6 +14,11 @@
     vertical-align: top;
 }
 
+.title {
+    text-decoration: none;
+    margin-bottom: 0;
+}
+
 .top-navigation {
     display: inline-block;
 }
@@ -42,9 +47,9 @@
     background-color: #0223a6;
 }
 
+.top-navigation a:hover,
 .top-navigation button:hover {
-    color: lightgrey;
-    font-size: 17px;
+    color: rgb(176, 0, 0);
 }
 
 @media all and (max-width: 620px) {
@@ -66,7 +71,6 @@
     }
     .top-navigation a:hover,
     .top-navigation button:hover {
-        color: lightgrey;
-        font-size: 15px;
+        color: rgb(176, 0, 0);
     }
 }

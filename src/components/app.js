@@ -9,10 +9,8 @@ import RegistrationPage  from './registration-page';
 import SearchPage  from './search-page';
 import ResultsPage from './results-page';
 import WishList from './wishlist';
-
+import IntroPage from "./intro-page";
 import {refreshAuthToken} from '../actions/auth';
-
-
 
 export class App extends Component {
     componentDidUpdate(prevProps) {
@@ -49,6 +47,7 @@ export class App extends Component {
             <div className="app">
                 <HeaderBar title="Trendlier"/>
                 <Route exact path="/" component={LandingPage} />
+                <Route exact path="/intro-page" component={IntroPage} />
                 <Route exact path="/auth/login" component={LoginForm} />
                 <Route exact path="/auth/signup" component={RegistrationPage} />
                 <Route exact path="/search-page" component={SearchPage}/>

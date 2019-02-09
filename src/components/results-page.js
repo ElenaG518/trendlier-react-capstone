@@ -25,9 +25,7 @@ class ResultsPage extends React.Component {
                     {this.props.error}
                 </div>
             );
-        };
-
-        if (!this.props.fetchedData) {
+        } else  if (this.props.loading) {
             return (
             <div >
                 <h2 className="section-title">results</h2>
@@ -41,7 +39,8 @@ class ResultsPage extends React.Component {
             </div>
          
             )
-        } else {
+        }
+         if (this.props.displayResults) {
             const results = this.props.fetchedData;
             console.log("results", results);
             const displayResult = results.map((item, index) => {
@@ -71,6 +70,8 @@ class ResultsPage extends React.Component {
        
 const mapStateToProps = state => {
     return {
+        loading: state.trendlier.loading,
+        displayResults: state.trendlier.displayResults,
         fetchedData: state.trendlier.fetchedData, 
         error: state.trendlier.error,
         username: state.auth.currentUser.username
@@ -78,3 +79,4 @@ const mapStateToProps = state => {
 };
 
 export default requiresLogin()(connect(mapStateToProps)(ResultsPage));
+

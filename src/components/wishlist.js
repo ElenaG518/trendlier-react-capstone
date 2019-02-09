@@ -12,8 +12,8 @@ class WishList extends Component {
     componentDidMount() {
         const {username} = this.props.match.params;
         console.log("username", username);
-        this.props.dispatch(fetchWishlist(username))
-        .then(()=>console.log("wishlist", this.props.wishlist.products));
+        this.props.dispatch(fetchWishlist(username));
+        // .then(()=>console.log("wishlist", this.props.wishlist.products));
     };
 
     render() {
@@ -40,10 +40,11 @@ class WishList extends Component {
             </div>
             
         	)
-        } else {
+        }
+         else {
             const data = this.props.wishlist.products;
             let displayResults;
-            console.log(data.length);
+            console.log("data ", data, data.length);
             if (data.length) {
                 displayResults = data.map((item, index) => {
                     return ( 
@@ -55,7 +56,8 @@ class WishList extends Component {
             } 
         
             return (
-                <div className={data.length ? "" : "separate"}>
+                
+                <div className={data.length ? "" : "separate"}> 
                 <section className="wish-list">
                     <h2 >My Wishlist</h2>
                    
@@ -67,7 +69,7 @@ class WishList extends Component {
                         ) : (
                             <div className="message">No items have been added.</div>
                         )
-                    }
+                    } 
                     
                 </section>
                 <Footer /> 
@@ -79,6 +81,7 @@ class WishList extends Component {
 }
 
 const mapStateToProps = state => ({
+    
     wishlist: state.trendlier.wishlist,
     error: state.trendlier.error
 });
