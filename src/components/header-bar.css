@@ -47,10 +47,10 @@
     background-color: #0223a6;
 }
 
+.top-navigation a:hover,
 .top-navigation button:hover {
     color: rgb(176, 0, 0);
-    /* font-size: 17px; */
-}
+
 
 @media all and (max-width: 620px) {
     .logo {
@@ -72,6 +72,6 @@
     .top-navigation a:hover,
     .top-navigation button:hover {
         color: rgb(176, 0, 0);
-        /* font-size: 15px; */
+
     }
 }

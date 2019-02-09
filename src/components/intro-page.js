@@ -2,14 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 // import { Link} from 'react-router-dom';
 import requiresLogin from './requires-login';
-import { setCategory} from '../actions/product-data';
 
 export class IntroPage extends React.Component {
 
-    newSearch() {
-        this.props.dispatch(setCategory(''));
-    };
-    
+
     render() {
         
         return (
@@ -34,8 +30,5 @@ export class IntroPage extends React.Component {
     }        
 }
 
-const mapStateToProps = state => ({
-    username: state.auth.currentUser.username
-});
 
-export default requiresLogin()(connect(mapStateToProps)(IntroPage));
+export default requiresLogin()(connect()(IntroPage));
