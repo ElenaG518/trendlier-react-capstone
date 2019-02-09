@@ -68,7 +68,8 @@ p {
 
 .intro a:hover {
     box-shadow: 2px 2px darkgray;
-    color: rgb(176, 0, 0);
+    color: lightgrey;
+    background: dodgerblue;
 }
 
 .login-form,

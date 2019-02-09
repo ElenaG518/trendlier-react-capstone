@@ -25,7 +25,9 @@ export class HeaderBar extends React.Component {
         
         return (
             <div className="top-menu">
+
                 <h1 className="logo"><Link to="/intro-page" id="intro-page" className="title">{this.props.title}</Link></h1>
+
                 <nav className="top-navigation" role="navigation">
                 <div className="content ">
                     <ul className="links ">

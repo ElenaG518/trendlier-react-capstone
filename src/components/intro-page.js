@@ -4,7 +4,6 @@ import requiresLogin from './requires-login';
 
 export class IntroPage extends React.Component {
 
-    
     render() {
         
         return (
@@ -28,7 +27,6 @@ export class IntroPage extends React.Component {
         );
     }        
 }
-
 
 
 export default requiresLogin()(connect()(IntroPage));
