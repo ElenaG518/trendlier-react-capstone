@@ -53,7 +53,7 @@ export class App extends Component {
                 <Route exact path="/search-page" component={SearchPage}/>
                 <Route exact path="/results-page/:id" component={ResultsPage} />
                 <Route exact path="/wishlist/:username" component={WishList} />
-                       
+                 
             </div>
        );
     }

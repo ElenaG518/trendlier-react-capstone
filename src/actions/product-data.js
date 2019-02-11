@@ -6,17 +6,11 @@ export const setCategory = category => ({
     type: SET_CATEGORY,
     category
 });
-export const FETCH_CATEGORY_DATA = 'FETCH_CATEGORY_DATA';
-export const fetchCategoryData = () => ({
-    type: FETCH_CATEGORY_DATA,
-    loading: true
-})
 export const FETCH_CATEGORY_DATA_SUCCESS = 'FETCH_CATEGORY_DATA_SUCCESS';
 export const fetchCategoryDataSuccess = fetchedData => ({
     type: FETCH_CATEGORY_DATA_SUCCESS,
     fetchedData
 });
-
 export const FETCH_CATEGORY_DATA_ERROR = 'FETCH_CATEGORY_DATA_ERROR';
 export const fetchCategoryDataError = error => ({
     type: FETCH_CATEGORY_DATA_ERROR,
@@ -32,11 +26,6 @@ export const addWishlistItemError = error => ({
     type: ADD_WISHLIST_ITEM_ERROR,
     error
 });
-export const FETCH_WISHLIST_DATA = 'FETCH_WISHLIST_DATA';
-export const fetchWishlistData = () => ({
-    type: FETCH_WISHLIST_SUCCESS,
-    loading: true
-});
 export const FETCH_WISHLIST_SUCCESS = 'FETCH_WISHLIST_SUCCESS';
 export const fetchWishlistSuccess = wishlist => ({
     type: FETCH_WISHLIST_SUCCESS,
@@ -47,11 +36,6 @@ export const fetchWishlistError = error => ({
     type: FETCH_WISHLIST_ERROR,
     error
 });
-export const CLEAR_FETCHED_DATA = 'CLEAR_FETCHED_DATA';
-export const clearFetchedData = fetchedData => ({
-    type: CLEAR_FETCHED_DATA,
-    fetchedData
-});
 export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
 export const deleteItemError = error => ({
     type: DELETE_ITEM_ERROR,
@@ -60,8 +44,7 @@ export const deleteItemError = error => ({
 
 
 export const fetchData = category => (dispatch, getState) => {
-    
-    dispatch(fetchCategoryData());
+    console.log("fetchdata", category);
     const authToken = getState().auth.authToken;
     console.log("fetchCategoryData called", category);
     console.log("API ", `${API_BASE_URL}/bestbuy/${category}`);
@@ -124,7 +107,6 @@ export const addItem = item => (dispatch, getState) => {
     }
 
     export const fetchWishlist = user => (dispatch, getState) => {
-        dispatch(fetchWishlistData());
         console.log("fetchWishlist", user);
         
     console.log("API ", `${API_BASE_URL}/products/${user}`);
