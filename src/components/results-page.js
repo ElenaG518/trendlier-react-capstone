@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Spinner from 'react-spinkit';
 
-import { fetchData, clearFetchedData } from "../actions/product-data";
+import { fetchData } from "../actions/product-data";
 import ResultsItem from './results-item';
 import requiresLogin from './requires-login';
 import Footer from './footer';
@@ -13,7 +13,6 @@ class ResultsPage extends React.Component {
     componentDidMount() {
         const {id} = this.props.match.params;
         console.log(id);
-        this.props.dispatch(clearFetchedData(null));
         this.props.dispatch(fetchData(id));    
     };
 
@@ -25,9 +24,7 @@ class ResultsPage extends React.Component {
                     {this.props.error}
                 </div>
             );
-        };
-
-        if (!this.props.fetchedData) {
+        } else if (!this.props.fetchedData) {
             return (
             <div >
                 <h2 className="section-title">results</h2>
@@ -40,7 +37,7 @@ class ResultsPage extends React.Component {
                 </div>
             </div>
          
-            )
+            );
         } else {
             const results = this.props.fetchedData;
             console.log("results", results);
