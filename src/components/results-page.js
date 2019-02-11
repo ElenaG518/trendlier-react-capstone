@@ -68,7 +68,7 @@ class ResultsPage extends React.Component {
        
 const mapStateToProps = state => {
     return {
-        displayResults: state.trendlier.displayResults,
+        
         fetchedData: state.trendlier.fetchedData, 
         error: state.trendlier.error,
         username: state.auth.currentUser.username

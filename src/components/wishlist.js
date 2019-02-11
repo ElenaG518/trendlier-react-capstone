@@ -12,8 +12,8 @@ class WishList extends Component {
     componentDidMount() {
         const {username} = this.props.match.params;
         console.log("username", username);
-        this.props.dispatch(fetchWishlist(username));
-        // .then(()=>console.log("wishlist", this.props.wishlist.products));
+        this.props.dispatch(fetchWishlist(username))
+        .then(()=>console.log("wishlist", this.props.wishlist.products));
     };
 
     render() {
