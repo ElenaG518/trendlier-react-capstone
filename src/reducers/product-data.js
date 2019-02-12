@@ -5,7 +5,8 @@ import {
     ADD_WISHLIST_ITEM_SUCCESS,
     ADD_WISHLIST_ITEM_ERROR,
     FETCH_WISHLIST_SUCCESS,
-    FETCH_WISHLIST_ERROR
+    FETCH_WISHLIST_ERROR, 
+    CLEAR_FETCHED_DATA
 
 }  from '../actions/product-data';
 
@@ -20,19 +21,17 @@ const initialState = {
 export default function reducer (state = initialState, action) {
     if (action.type === SET_CATEGORY) {
         return Object.assign({}, state, {
-        fetchedData: action.fetchedData,
-            error: null,
-            loading: false
+        category: action.category   
         });
     } else if (action.type === FETCH_CATEGORY_DATA_SUCCESS) {
         return Object.assign({}, state, {
-            error: action.error,
-            loading: false
+            fetchedData: action.fetchedData,
+            error: null    
         });
     } else if (action.type === FETCH_CATEGORY_DATA_ERROR) {
         return Object.assign({}, state, {
             error: action.error,
-            loading: false
+            
         });
     } else if (action.type === ADD_WISHLIST_ITEM_SUCCESS) {
         return Object.assign({}, state, {
@@ -47,16 +46,17 @@ export default function reducer (state = initialState, action) {
     } else if (action.type === FETCH_WISHLIST_SUCCESS) {
         return Object.assign({}, state, {
             wishlist: action.wishlist,
-            loading: false,
             error: null
         });
     } else if (action.type === FETCH_WISHLIST_ERROR) {
         return Object.assign({}, state, {
             error: action.error,
-            loading: false
         });
-    
-    }
+    } else if (action.type === CLEAR_FETCHED_DATA) {
+        return Object.assign({}, state, {
+            fetchedData: action.fetchedData
+        });
+    } 
          
     return state;
 }    

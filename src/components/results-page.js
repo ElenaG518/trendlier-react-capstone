@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import Spinner from 'react-spinkit';
 
-import { fetchData } from "../actions/product-data";
+import { fetchData, clearFetchedData } from "../actions/product-data";
 import ResultsItem from './results-item';
 import requiresLogin from './requires-login';
 import Footer from './footer';
@@ -13,6 +13,7 @@ class ResultsPage extends React.Component {
     componentDidMount() {
         const {id} = this.props.match.params;
         console.log(id);
+        this.props.dispatch(clearFetchedData(null));
         this.props.dispatch(fetchData(id));    
     };
 
@@ -24,7 +25,9 @@ class ResultsPage extends React.Component {
                     {this.props.error}
                 </div>
             );
-        } else if (!this.props.fetchedData) {
+        };
+        
+        if (!this.props.fetchedData) {
             return (
             <div >
                 <h2 className="section-title">results</h2>
@@ -37,7 +40,7 @@ class ResultsPage extends React.Component {
                 </div>
             </div>
          
-            );
+            )
         } else {
             const results = this.props.fetchedData;
             console.log("results", results);
@@ -68,7 +71,6 @@ class ResultsPage extends React.Component {
        
 const mapStateToProps = state => {
     return {
-        
         fetchedData: state.trendlier.fetchedData, 
         error: state.trendlier.error,
         username: state.auth.currentUser.username

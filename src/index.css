@@ -33,6 +33,18 @@ body {
     justify-content: center;
 }
 
+#demo {
+    background: transparent;
+    color: lightblue;
+    display: block;
+    margin: auto;
+    text-decoration: underline;
+}
+
+#demo:hover {
+    color: red;
+}
+
 header {
     font-size: 1.25em;
     text-align: center;

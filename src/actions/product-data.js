@@ -41,7 +41,11 @@ export const deleteItemError = error => ({
     type: DELETE_ITEM_ERROR,
     error
 });
-
+export const CLEAR_FETCHED_DATA = 'CLEAR_FETCHED_DATA';
+export const clearFetchedData = fetchedData => ({
+    type: CLEAR_FETCHED_DATA,
+    fetchedData
+});
 
 export const fetchData = category => (dispatch, getState) => {
     console.log("fetchdata", category);
