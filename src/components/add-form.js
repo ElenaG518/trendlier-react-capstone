@@ -10,7 +10,7 @@ export default class AddForm extends React.Component {
 
     onSubmit(event) {
         event.preventDefault();
-        console.log("state", this.state.adding);
+        console.log("state received by submit", this.state.adding);
         console.log("props", this.props);
         const text = this.textInput.value.trim();
         if (text && this.props.onAdd) {
@@ -18,6 +18,7 @@ export default class AddForm extends React.Component {
         }
         this.textInput.value = '';
         this.setAdding(false);
+        console.log("state on submit", this.state.adding);
     }
 
     setAdding(adding) {
@@ -28,6 +29,7 @@ export default class AddForm extends React.Component {
 
     render() {
         if (!this.state.adding) {
+            console.log("state on button", this.state.adding);
             const text = `add note`;
             return (
                 <div className="add-button">
@@ -38,6 +40,7 @@ export default class AddForm extends React.Component {
             );
         }
         const label = `Add a note to wishlist item`;
+        console.log("state on addForm", this.state.adding);
         return (
             <form className="add-form" onSubmit={(e) => this.onSubmit(e)}>
                 <textarea
@@ -47,8 +50,8 @@ export default class AddForm extends React.Component {
                     aria-label={label}
                     placeholder ="Add note..."
                 />
-                <button>add item to wishlist</button>
-                <button type="button" onClick={() => this.setAdding(false)}>
+                <button type="submit">add item to wishlist</button>
+                <button className="cancel-item" onClick={() => this.setAdding(false)}>
                     cancel
                 </button>
             </form>

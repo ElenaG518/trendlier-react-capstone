@@ -158,6 +158,7 @@ h2 {
 
 .message {
     margin-top: 40%;
+    margin-bottom: 40%;
 }
 
 .note {
@@ -168,6 +169,26 @@ h2 {
 
 p:last-of-type {
     padding-bottom: 100px;
+}
+
+.ReactModalPortal .modal-p {
+    padding-bottom: 20px;
+}
+
+.modal-buttons-div {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+.modal-btn {
+    padding: 3px 7px;
+    border: 1px solid #919fa4;
+    justify-items: center;
+    background: #e2e6ec;
+    margin: 0;
+    background-color: #d0d4db;
+    border-radius: 4px;
 }
 
 @media all and (max-width: 620px) {
