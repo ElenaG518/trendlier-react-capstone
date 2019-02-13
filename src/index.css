@@ -28,6 +28,10 @@ body {
     width: 100%;
 }
 
+button {
+    cursor: pointer;
+}
+
 .button-wrapper {
     display: flex;
     justify-content: center;

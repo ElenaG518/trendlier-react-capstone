@@ -14,6 +14,7 @@ export function RegistrationPage(props) {
     return (
         <div className="back-img">
         <div className="transparent">
+           <Link to="/"><h1>Trendlier</h1></Link>
            <h2 className="auth">Register for Trendlier</h2>
            <RegistrationForm />
            
