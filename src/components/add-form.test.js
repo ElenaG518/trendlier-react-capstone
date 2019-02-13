@@ -20,7 +20,7 @@ describe('<AddForm />', () => {
         expect(wrapper.hasClass('add-form')).toEqual(true);
     });
 
-    it('Should switch to adding when the add button is clicked', () => {
+    it('Should switch to adding when the add note button is clicked', () => {
         const wrapper = shallow(<AddForm />);
         wrapper.instance().setAdding(false);
         wrapper.simulate('click');

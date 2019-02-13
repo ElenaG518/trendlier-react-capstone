@@ -1,62 +1,39 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import {addItem} from "../actions/product-data";
+import noImage from '../assets/no-image.png';
 import AddForm from './add-form';
 import './results-item.css'
-import noImage from '../assets/no-image.png';
+
 export class ResultsItem extends Component {
     
-    addListItem(text) {
-        console.log(text);
-        let itemImg=null;
-        if (this.props.images.standard===null) {
-            itemImg=noImage;
-        } else {
-            itemImg = this.props.images.standard;
-        };
-        const data={
-                    image:itemImg,
-                    name: this.props.names.title,
-                    purchaseUrl: this.props.links.web,
-                    regularPrice: this.props.prices.regular,
-                    currentPrice: this.props.prices.current,
-                    rating: this.props.customerReviews.averageScore,
-                    reviewsCount: this.props.customerReviews.count,
-                    description: this.props.descriptions.short,
-                    notes: text,            
-                    loggedInUserName:this.props.username
-                 }
-                 console.log("data", data); 
-                 this.props.dispatch(addItem(data))
-                 .then(()=> alert("item added to wishlist"));    
-    }
-
    render() {
+
+       const {images, names, rank, prices, customerReviews, descriptions, links } = this.props.item;
     let itemImg=null;
-        if (this.props.images.standard==null) {
+        if (images.standard==null) {
             itemImg=noImage;
         } else {
-            itemImg = this.props.images.standard;
+            itemImg = images.standard;
         };    
 
         return (
             <article>
                 <div className="picture">
                     <img src={`${itemImg}`}
-                    alt={`${this.props.names.title}`} />
-                    <span>{this.props.rank}</span>
+                    alt={`${names.title}`} />
+                    <span>{rank}</span>
                 </div>
-                <h3>{this.props.names.title}</h3>
+                <h3>{names.title}</h3>
                 <div className="item-description">
-                    <p><span className="tag">Regular Price:  </span>{this.props.prices.regular}</p>
-                    <p><span className="tag">Current Price:  </span> {this.props.prices.current}</p>
-                    <p><span className="tag">Average Rating:  </span>{this.props.customerReviews.averageScore}</p>
-                    <p><span className="tag">Number of Reviews:   </span>{this.props.customerReviews.count}</p>
-                    <p><span className="tag">Description:   </span>{this.props.descriptions.short}</p>
+                    <p><span className="tag">Regular Price:  </span>{prices.regular}</p>
+                    <p><span className="tag">Current Price:  </span> {prices.current}</p>
+                    <p><span className="tag">Average Rating:  </span>{customerReviews.averageScore}</p>
+                    <p><span className="tag">Number of Reviews:   </span>{customerReviews.count}</p>
+                    <p><span className="tag">Description:   </span>{descriptions.short}</p>
                     <AddForm type="resultsItem"
-                        onAdd={text => this.addListItem(text)}
+                        onAdd={text => this.props.onItemClicked(this.props.item, text)}
                     />
-                    <a href={`${this.props.links.web}`} target="_blank" rel="noopener noreferrer" className="purchase">
+                    <a href={`${links.web}`} target="_blank" rel="noopener noreferrer" className="purchase">
                     purchase</a> 
                     
                 </div>
