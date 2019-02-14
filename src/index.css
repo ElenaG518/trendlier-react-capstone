@@ -133,8 +133,6 @@
     
     form button:hover {
         box-shadow: 2px 2px darkgray;
-        color: lightgrey;
-        /* background: #0021ae70; */
     }
     
     a {
