@@ -1,4 +1,5 @@
 import React from "react";
+import Modal from 'react-modal';
 import { connect } from "react-redux";
 import Spinner from 'react-spinkit';
 import noImage from '../assets/no-image.png';
@@ -7,9 +8,36 @@ import ResultsItem from './results-item';
 import requiresLogin from './requires-login';
 import Footer from './footer';
 
-import './results-page.css'
+import './results-page.css';
 
-class ResultsPage extends React.Component {    
+const customStyles = {
+    content : {
+        width: "280px",
+        fontFamily: 'Chakra Petch, sans-serif',
+        color: "olive",
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
+    }
+  };
+
+
+
+
+class ResultsPage extends React.Component {  
+    constructor(props) {
+        super(props);
+        this.state = {
+            modalIsOpen: false
+        }
+
+        this.openModal = this.openModal.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+    }
+
     componentDidMount() {
         const {id} = this.props.match.params;
         const username = this.props.username;
@@ -17,6 +45,14 @@ class ResultsPage extends React.Component {
         this.props.dispatch(fetchData(id)); 
         this.props.dispatch(fetchWishlist(username));   
     };
+
+    openModal() {
+        this.setState({modalIsOpen: true});
+    }
+    
+    closeModal() {
+        this.setState({modalIsOpen: false});
+    }
 
     handleItemClicked = (item, text) => {
         let itemImg=null;
@@ -47,7 +83,8 @@ class ResultsPage extends React.Component {
                  })
                  if (shouldAddItem) {
                  this.props.dispatch(addItem(data))
-                 .then(()=> alert("item added to wishlist"));  
+                 .then(() => this.openModal);  
+                //  .then(()=> alert("item added to wishlist"));  
                  } else {
                      alert("item is already in wishlist"); 
                  }
@@ -96,6 +133,18 @@ class ResultsPage extends React.Component {
                 <div className="item">   
                 {error}
                 {displayResult}
+                <Modal 
+                            isOpen={this.state.modalIsOpen}
+                            
+                            style={customStyles}
+                            contentLabel="Item has been added to wishlist"
+                >
+                            <p className="modal-p">Item has been added to wishlist</p>
+                            <div className="modal-buttons-div">
+                                <button className="modal-btn" onClick={this.closeModal}>ok</button>
+                                
+                            </div>
+                            </Modal>
                 </div>
                 </section>
                 <Footer /> 
