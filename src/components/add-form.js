@@ -6,7 +6,7 @@ export default class AddForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            adding: false,
+            adding: false
         }
     }
 
