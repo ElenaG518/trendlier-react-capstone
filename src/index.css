@@ -198,9 +198,9 @@
         border: 1px solid #919fa4;
         justify-items: center;
         margin: 0;
-        background-color: #33a8ff;
+        font-size: 14px;
+        background-color: #34caff7a;
         border-radius: 4px;
-        color: white;
         font-family: 'Chakra Petch', sans-serif;
     }
     

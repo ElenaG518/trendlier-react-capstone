@@ -14,6 +14,11 @@
     vertical-align: top;
 }
 
+.logo:hover {
+    color: #b3e9fc;
+    text-shadow: 1px 1px lightskyblue;
+}
+
 .title {
     text-decoration: none;
     margin-bottom: 0;
@@ -49,7 +54,7 @@
 
 .top-navigation a:hover,
 .top-navigation button:hover {
-    color: rgb(176, 0, 0);
+    color: #b3e9fc;
 }
 
 @media all and (max-width: 620px) {
