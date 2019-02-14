@@ -48,7 +48,7 @@ class WishList extends Component {
             if (data.length) {
                 displayResults = data.map((item, index) => {
                     return ( 
-                    <li key={index}>
+                    <li className="list-flex" key={index}> 
                         <WishlistItem {...item} />
                     </li>
                     )
@@ -65,7 +65,9 @@ class WishList extends Component {
                     
                     {
                         data.length ? (
-                            <ul>{displayResults}</ul>
+                            
+                            <ul className="wishlist-flex">{displayResults}</ul>
+                            
                         ) : (
                             <div className="message">No items have been added.</div>
                         )

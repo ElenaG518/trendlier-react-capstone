@@ -12,7 +12,6 @@ import {editWishlistItem,
 const customStyles = {
     content : {
         width: "280px",
-        background: "aliceblue",    
         fontFamily: 'Chakra Petch, sans-serif',
         color: "olive",
         top                   : '50%',
@@ -28,12 +27,10 @@ export class WishlistItem extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            onDeleteClicked: false,
             modalIsOpen: false
         };
         
         this.openModal = this.openModal.bind(this);
-        // this.afterOpenModal = this.afterOpenModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
     }
 
@@ -61,11 +58,7 @@ export class WishlistItem extends Component {
     }  
 
     render() {
-
-                // if (this.state.onDeleteClicked) {
-        //     return modal : https://github.com/reactjs/react-modal
-        // } else {
-        
+      
             return (
                 <article>              
                     <div className="picture">
@@ -92,8 +85,8 @@ export class WishlistItem extends Component {
                         >
                             <p className="modal-p">Are you sure you want to delete item?</p>
                             <div className="modal-buttons-div">
-                            <button className="modal-btn" onClick={() => this.onDeleteClick()}>Yes</button>
-                            <button className="modal-btn" onClick={this.closeModal}>No</button>
+                                <button className="modal-btn" onClick={this.closeModal}>cancel</button>
+                                <button className="modal-btn" onClick={() => this.onDeleteClick()}>ok</button>
                             </div>
                             </Modal>
                         <a href={`${this.props.purchaseUrl}`} target="_blank" rel="noopener noreferrer" className="purchase">purchase</a>
@@ -103,9 +96,6 @@ export class WishlistItem extends Component {
             )    
         }
     }
-// }    
-
-
 
 export default connect()(WishlistItem);
 
