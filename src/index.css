@@ -134,7 +134,7 @@
     form button:hover {
         box-shadow: 2px 2px darkgray;
         color: lightgrey;
-        background: #0021ae70;
+        /* background: #0021ae70; */
     }
     
     a {
@@ -171,9 +171,9 @@
         margin-bottom: 40%;
     }
     
-    .note {
+    .item-description .note {
         margin: 20px 0;
-        padding: 0 20px;
+        padding: 20px;
         background-color: #e2e6ec;
     }
     
