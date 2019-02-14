@@ -154,6 +154,13 @@
     }
     
     .auth {
+        width: 100%;
+        background: darkblue;
+        text-decoration: none;
+        padding-bottom: 20px;
+    }
+    
+    .auth h2 {
         color: #ffeda4;
     }
     
