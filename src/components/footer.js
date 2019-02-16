@@ -15,14 +15,19 @@ export class Footer extends Component {
           <footer>
               
                  <ul className="social-links">
-                    <li>
+                    {/* <li>
                         <a href="https://www.facebook.com/ElenaG518" rel="noopener noreferrer" target="_blank">
                             <ion-icon id="ion-social-facebook" name="logo-facebook"></ion-icon>
                         </a>
-                    </li>
+                    </li> */}
                     <li>
                         <a href="https://instagram.com/party518" rel="noopener noreferrer" target="_blank">
                             <ion-icon id="ion-social-instagram" name="logo-instagram"></ion-icon>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/elena-granados-eg/" rel="noopener noreferrer" target="_blank">
+                            <ion-icon id="ion-social-linkedin" name="logo-linkedin"></ion-icon>
                         </a>
                     </li>
                     <li>

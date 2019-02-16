@@ -1,10 +1,11 @@
 article {
-    background: #eaf0f28f;
+    background: #dce5efa1;
     padding: 25px;
     margin: 25px auto;
     position: relative;
     display: block;
     line-height: 35px;
+    border-radius: 7px;
 }
 
 .item-description p {
@@ -46,6 +47,12 @@ article img {
     color: lightgray;
     z-index: 1;
 }
+
+
+/* .border {
+    border: 1px solid lightgray;
+    background: #eaf0f28f;
+} */
 
 article button,
 article a,

@@ -17,6 +17,7 @@ export class ResultsItem extends Component {
         };    
 
         return (
+            <div className="border">
             <article>
                 <div className="picture">
                     <img src={`${itemImg}`}
@@ -38,6 +39,7 @@ export class ResultsItem extends Component {
                     
                 </div>
             </article>
+            </div>
         )
     }
 }

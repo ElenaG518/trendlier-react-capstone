@@ -26,8 +26,10 @@
     
     #ion-social-facebook,
     #ion-social-instagram,
+    #ion-social-linkedin,
     #ion-social-email {
         color: white;
+        font-size: 25px;
     }
     
     footer p:last-of-type {
