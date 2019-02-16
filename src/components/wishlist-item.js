@@ -32,6 +32,7 @@ export class WishlistItem extends Component {
         
         this.openModal = this.openModal.bind(this);
         this.closeModal = this.closeModal.bind(this);
+        this.onDeleteClick = this.onDeleteClick.bind(this);
     }
 
     openModal() {
@@ -60,6 +61,7 @@ export class WishlistItem extends Component {
     render() {
       
             return (
+                <div>
                 <article>              
                     <div className="picture">
                         <img src={`${this.props.image}`} alt={`${this.props.name}`} />
@@ -86,13 +88,14 @@ export class WishlistItem extends Component {
                             <p className="modal-p">Are you sure you want to delete item?</p>
                             <div className="modal-buttons-div">
                                 <button className="modal-btn" onClick={this.closeModal}>cancel</button>
-                                <button className="modal-btn" onClick={() => this.onDeleteClick()}>ok</button>
+                                <button className="modal-btn" onClick={this.onDeleteClick}>ok</button>
                             </div>
                             </Modal>
                         <a href={`${this.props.purchaseUrl}`} target="_blank" rel="noopener noreferrer" className="purchase">purchase</a>
                         
                     </div>
                 </article>
+                </div>
             )    
         }
     }

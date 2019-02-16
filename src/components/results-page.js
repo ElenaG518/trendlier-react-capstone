@@ -31,7 +31,8 @@ class ResultsPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            modalIsOpen: false
+            modalIsOpen: false,
+            shouldAddItem:true
         }
 
         this.openModal = this.openModal.bind(this);
@@ -46,8 +47,9 @@ class ResultsPage extends React.Component {
         this.props.dispatch(fetchWishlist(username));   
     };
 
-    openModal() {
-        this.setState({modalIsOpen: true});
+    openModal(shouldAddItem) {
+        this.setState({modalIsOpen: true,
+        shouldAddItem});
     }
     
     closeModal() {
@@ -83,11 +85,12 @@ class ResultsPage extends React.Component {
                  })
                  if (shouldAddItem) {
                  this.props.dispatch(addItem(data))
-                 .then(() => this.openModal);  
-                //  .then(()=> alert("item added to wishlist"));  
-                 } else {
-                     alert("item is already in wishlist"); 
-                 }
+                 .then(() => {this.openModal(shouldAddItem);
+                    this.props.dispatch(fetchWishlist(this.props.username))}
+                 );  
+                } else {
+                    this.openModal(shouldAddItem);
+                }
     }
 
     render() {
@@ -126,6 +129,9 @@ class ResultsPage extends React.Component {
                     )
             });
  
+            let msg = this.state.shouldAddItem ? "Item has been added to wishlist": "item is already in wishlist";
+            
+
             return (
                 <div>
                 <section className="results">
@@ -137,9 +143,9 @@ class ResultsPage extends React.Component {
                             isOpen={this.state.modalIsOpen}
                             
                             style={customStyles}
-                            contentLabel="Item has been added to wishlist"
+                            contentLabel={msg}
                 >
-                            <p className="modal-p">Item has been added to wishlist</p>
+                            <p className="modal-p">{msg}</p>
                             <div className="modal-buttons-div">
                                 <button className="modal-btn" onClick={this.closeModal}>ok</button>
                                 
