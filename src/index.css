@@ -49,6 +49,7 @@
     }
     
     #demo {
+        padding-bottom: 40px;
         background: transparent;
         color: lightblue;
         display: block;
