@@ -61,7 +61,7 @@ export class WishlistItem extends Component {
     render() {
       
             return (
-                <div classname="border">
+                <div>
                 <article>              
                     <div className="picture">
                         <img src={`${this.props.image}`} alt={`${this.props.name}`} />

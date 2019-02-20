@@ -24,9 +24,6 @@ const customStyles = {
     }
   };
 
-
-
-
 class ResultsPage extends React.Component {  
     constructor(props) {
         super(props);
@@ -103,7 +100,7 @@ class ResultsPage extends React.Component {
             );
         };
         
-        if (!this.props.fetchedData) {
+        if (this.props.loading) {
             return (
             <div >
                 <h2 className="section-title">results</h2>
@@ -162,6 +159,7 @@ class ResultsPage extends React.Component {
        
 const mapStateToProps = state => {
     return {
+        loading: state.trendlier.loading,
         fetchedData: state.trendlier.fetchedData, 
         error: state.trendlier.error,
         username: state.auth.currentUser.username,

@@ -6,6 +6,10 @@ export const setCategory = category => ({
     type: SET_CATEGORY,
     category
 });
+export const FETCH_CATEGORY_DATA = 'FETCH_CATEGORY_DATA';
+export const fetchCategoryData = () => ({
+    type: FETCH_CATEGORY_DATA,   
+});
 export const FETCH_CATEGORY_DATA_SUCCESS = 'FETCH_CATEGORY_DATA_SUCCESS';
 export const fetchCategoryDataSuccess = fetchedData => ({
     type: FETCH_CATEGORY_DATA_SUCCESS,
@@ -26,6 +30,10 @@ export const addWishlistItemError = error => ({
     type: ADD_WISHLIST_ITEM_ERROR,
     error
 });
+export const FETCH_WISHLIST_DATA = 'FETCH_WISHLIST_DATA';
+export const fetchWishlistData = () => ({
+    type: FETCH_WISHLIST_DATA
+});
 export const FETCH_WISHLIST_SUCCESS = 'FETCH_WISHLIST_SUCCESS';
 export const fetchWishlistSuccess = wishlist => ({
     type: FETCH_WISHLIST_SUCCESS,
@@ -36,28 +44,27 @@ export const fetchWishlistError = error => ({
     type: FETCH_WISHLIST_ERROR,
     error
 });
-export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
-export const deleteItemError = error => ({
-    type: DELETE_ITEM_ERROR,
-    error
-});
 export const CLEAR_FETCHED_DATA = 'CLEAR_FETCHED_DATA';
 export const clearFetchedData = fetchedData => ({
     type: CLEAR_FETCHED_DATA,
     fetchedData
 });
+export const DELETE_ITEM_ERROR = 'DELETE_ITEM_ERROR';
+export const deleteItemError = error => ({
+    type: DELETE_ITEM_ERROR,
+    error
+});
+
 
 export const fetchData = category => (dispatch, getState) => {
-    console.log("fetchdata", category);
+    dispatch(fetchCategoryData());
     const authToken = getState().auth.authToken;
-    console.log("fetchCategoryData called", category);
-    console.log("API ", `${API_BASE_URL}/bestbuy/${category}`);
     return fetch(`${API_BASE_URL}/bestbuy/${category}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${authToken}`
-        }
-    })
+            method: 'GET',
+            headers: {
+            Authorization: `Bearer ${authToken}`
+            }
+        })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(data => {
@@ -89,13 +96,13 @@ export const addItem = item => (dispatch, getState) => {
     console.log(JSON.stringify(itemToAdd));
 
     return fetch(`${API_BASE_URL}/products/create`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${authToken}`
-        },
-        body: JSON.stringify(itemToAdd),
-        })
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${authToken}`
+            },
+            body: JSON.stringify(itemToAdd),
+            })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then(data => {
@@ -107,34 +114,36 @@ export const addItem = item => (dispatch, getState) => {
         });
 }
 
-export const fetchWishlist = user => (dispatch, getState) => {
-    console.log("fetchWishlist", user);
-    console.log("API ", `${API_BASE_URL}/products/${user}`);
-    const authToken = getState().auth.authToken;
-    return fetch(`${API_BASE_URL}/products/${user}`, {
-        method: 'GET',
-        headers: {
-            Authorization: `Bearer ${authToken}`
-        }
+    export const fetchWishlist = user => (dispatch, getState) => {
+        dispatch(fetchWishlistData());
+        console.log("fetchWishlist", user);
+        const authToken = getState().auth.authToken;
+        return fetch(`${API_BASE_URL}/products/${user}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${authToken}`
+            }
+            
         })
-        .then(res => normalizeResponseErrors(res))
-        .then(res => res.json())
-        .then(data => {
-            console.log("data", data);
-            dispatch(fetchWishlistSuccess(data));
-        })
-        .catch(err => {
-            dispatch(fetchWishlistError(err));
-        });
-};
+            .then(res => normalizeResponseErrors(res))
+            .then(res => res.json())
+            .then(data =>
+                {   console.log("data", data);
+                    dispatch(fetchWishlistSuccess(data));
+                }
+            )
+            .catch(err => {
+                dispatch(fetchWishlistError(err));
+            });
+    };
 
 export const editWishlistItem = (note, id) => (dispatch, getState) => {
     const authToken = getState().auth.authToken;
 
     const noteToUpdate = {
-        notes: note, 
-        id: id
-    };
+                notes: note, 
+                id: id
+        };
     console.log("this", noteToUpdate, id);
     return fetch(`${API_BASE_URL}/products/update/${id}`, {
         method: 'PUT',
@@ -144,14 +153,16 @@ export const editWishlistItem = (note, id) => (dispatch, getState) => {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${authToken}`
         }
-        })
-        .then(res => {return res})
-        .catch(err => err);
-}
+    }).then(res => {
+        return res;
+    })
+    .catch(err => err);
+};
 
 export const deleteWishlistItem = id => (dispatch, getState) => {
     console.log("deleteWishlistItem", id);
     const authToken = getState().auth.authToken;
+    // dispatch(localDeleteItem);
     return fetch(`${API_BASE_URL}/products/${id}`, {
         method: 'DELETE',
         headers: {
@@ -159,13 +170,12 @@ export const deleteWishlistItem = id => (dispatch, getState) => {
         }
     })
     .then(res => normalizeResponseErrors(res))
-    .then(() =>
-        {   console.log("success");
-        }
-    )
+    .then(() => {
+        console.log("success");
+    })
     .catch(err => {
         dispatch(deleteItemError(err));
     });
-}    
+};    
 
     

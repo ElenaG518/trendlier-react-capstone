@@ -26,7 +26,7 @@ class WishList extends Component {
             );
         };
 
-        if(!this.props.wishlist){
+        if(this.props.loadingWishlist){
             return (
             <div>
                 <h2 className="mylist-title">My Wishlist</h2>
@@ -83,10 +83,9 @@ class WishList extends Component {
 }
 
 const mapStateToProps = state => ({
-    
+    loadingWishlist: state.trendlier.loadingWishlist,
     wishlist: state.trendlier.wishlist,
     error: state.trendlier.error
 });
 
 export default requiresLogin()(connect(mapStateToProps)(WishList));
-

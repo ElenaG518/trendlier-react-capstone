@@ -39,7 +39,9 @@
     
     .wishlist-flex {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
+        align-items: flex-start;
+        align-content: space-around;
         flex-wrap: wrap;
     }
     
