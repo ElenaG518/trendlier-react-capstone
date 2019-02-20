@@ -26,8 +26,8 @@ export class ResultsItem extends Component {
                 </div>
                 <h3>{names.title}</h3>
                 <div className="item-description">
-                    <p><span className="tag">Regular Price:  </span>{prices.regular}</p>
-                    <p><span className="tag">Current Price:  </span> {prices.current}</p>
+                    <p><span className="tag">Regular Price:  $</span>{prices.regular}</p>
+                    <p><span className="tag">Current Price:  $</span>{prices.current}</p>
                     <p><span className="tag">Average Rating:  </span>{customerReviews.averageScore}</p>
                     <p><span className="tag">Number of Reviews:   </span>{customerReviews.count}</p>
                     <p><span className="tag">Description:   </span>{descriptions.short}</p>
