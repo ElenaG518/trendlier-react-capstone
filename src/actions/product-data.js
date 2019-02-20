@@ -8,20 +8,17 @@ export const setCategory = category => ({
 });
 export const FETCH_CATEGORY_DATA = 'FETCH_CATEGORY_DATA';
 export const fetchCategoryData = () => ({
-    type: FETCH_CATEGORY_DATA,
-    loading: true
-})
+    type: FETCH_CATEGORY_DATA,   
+});
 export const FETCH_CATEGORY_DATA_SUCCESS = 'FETCH_CATEGORY_DATA_SUCCESS';
 export const fetchCategoryDataSuccess = fetchedData => ({
     type: FETCH_CATEGORY_DATA_SUCCESS,
-    fetchedData,
-    loading: false
+    fetchedData
 });
-
 export const FETCH_CATEGORY_DATA_ERROR = 'FETCH_CATEGORY_DATA_ERROR';
 export const fetchCategoryDataError = error => ({
     type: FETCH_CATEGORY_DATA_ERROR,
-    error, loading: false
+    error
 });
 export const ADD_WISHLIST_ITEM_SUCCESS = 'ADD_WISHLIST_ITEM_SUCCESS';
 export const addWishlistItemSuccess = wishlistItem => ({
@@ -32,6 +29,10 @@ export const ADD_WISHLIST_ITEM_ERROR = 'ADD_WISHLIST_ITEM_ERROR';
 export const addWishlistItemError = error => ({
     type: ADD_WISHLIST_ITEM_ERROR,
     error
+});
+export const FETCH_WISHLIST_DATA = 'FETCH_WISHLIST_DATA';
+export const fetchWishlistData = () => ({
+    type: FETCH_WISHLIST_DATA
 });
 export const FETCH_WISHLIST_SUCCESS = 'FETCH_WISHLIST_SUCCESS';
 export const fetchWishlistSuccess = wishlist => ({
@@ -56,23 +57,20 @@ export const deleteItemError = error => ({
 
 
 export const fetchData = category => (dispatch, getState) => {
-    
     dispatch(fetchCategoryData());
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/bestbuy/${category}`, {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${authToken}`
-        }
-        
-    })
+            method: 'GET',
+            headers: {
+            Authorization: `Bearer ${authToken}`
+            }
+        })
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
-        .then(data =>
-            {   console.log("data", data.results);
-                dispatch(fetchCategoryDataSuccess(data.results));
-            }
-        )
+        .then(data => {
+            console.log("data", data.results);
+            dispatch(fetchCategoryDataSuccess(data.results));
+        })
         .catch(err => {
             dispatch(fetchCategoryDataError(err));
         });
@@ -105,20 +103,19 @@ export const addItem = item => (dispatch, getState) => {
             },
             body: JSON.stringify(itemToAdd),
             })
-            .then(res => normalizeResponseErrors(res))
-            .then(res => res.json())
-            .then(data =>
-                {   console.log("data", data);
-                dispatch(addWishlistItemSuccess(data));
-                }
-            )
-            .catch(err => {
-                dispatch(addWishlistItemError(err));
-            });
-    }
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(data => {
+            console.log("data", data);
+            dispatch(addWishlistItemSuccess(data));
+        })
+        .catch(err => {
+            dispatch(addWishlistItemError(err));
+        });
+}
 
     export const fetchWishlist = user => (dispatch, getState) => {
-    
+        dispatch(fetchWishlistData());
         console.log("fetchWishlist", user);
         const authToken = getState().auth.authToken;
         return fetch(`${API_BASE_URL}/products/${user}`, {
@@ -160,7 +157,7 @@ export const editWishlistItem = (note, id) => (dispatch, getState) => {
         return res;
     })
     .catch(err => err);
-}
+};
 
 export const deleteWishlistItem = id => (dispatch, getState) => {
     console.log("deleteWishlistItem", id);
@@ -173,14 +170,12 @@ export const deleteWishlistItem = id => (dispatch, getState) => {
         }
     })
     .then(res => normalizeResponseErrors(res))
-    .then(() =>
-        {   console.log("success");
-            
-        }
-    )
+    .then(() => {
+        console.log("success");
+    })
     .catch(err => {
         dispatch(deleteItemError(err));
     });
-}    
+};    
 
     
