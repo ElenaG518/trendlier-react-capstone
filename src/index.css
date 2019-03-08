@@ -51,7 +51,6 @@
     }
     
     #demo {
-        padding-bottom: 40px;
         background: transparent;
         color: lightblue;
         display: block;
@@ -80,6 +79,10 @@
     
     p {
         padding: 0 50px;
+    }
+    
+    .intro {
+        padding-bottom: 40px;
     }
     
     .intro a {
