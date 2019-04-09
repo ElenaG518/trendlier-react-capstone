@@ -4,45 +4,43 @@ export default class AddForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            adding: false
+            editing: false
         };
     }
 
     onSubmit(event) {
         event.preventDefault();
-        console.log("state received by submit", this.state.adding);
-        console.log("props", this.props);
         const text = this.textInput.value.trim();
         if (text && this.props.onAdd) {
             this.props.onAdd(text);
         }
         this.textInput.value = '';
-        // this.setAdding(false);
-        console.log("state on submit", this.state.adding);
+        this.setEditing(false);
+        console.log("state on submit", this.state.editing);
     }
 
-    setAdding(adding) {
+    setEditing(editing) {
         this.setState({
-            adding
+            editing
         });
     }
 
     render() {
-        if (!this.state.adding) {
-            console.log("state on button", this.state.adding);
+        if (!this.state.editing) {
+            console.log("state on button", this.state.editing);
             const text = `add note`;
             return (
-                <div className="add-button">
-                <button className="add-item" onClick={() => this.setAdding(true)}>
-                {text}
+                <button 
+                    className="add-item"
+                    onClick={() => this.setEditing(true)}>
+                    {text}
                 </button>    
-                </div>
             );
         }
         const label = `Add a note to wishlist item`;
-        console.log("state on addForm", this.state.adding);
+        console.log("state on addForm", this.state.editing);
         return (
-            <form className="add-form" onSubmit={(e) => this.onSubmit(e)}>
+            <form className="add-form" onSubmit={e => this.onSubmit(e)}>
                 <textarea
                     type="text"
                     rows="5" cols="40"
@@ -50,8 +48,8 @@ export default class AddForm extends React.Component {
                     aria-label={label}
                     placeholder ="Add note..."
                 />
-                <button type="submit">add item to wishlist</button>
-                <button className="cancel-item" onClick={() => this.setAdding(false)}>
+                <button >add item to wishlist</button>
+                <button type="button" onClick={() => this.setEditing(false)}>
                     cancel
                 </button>
             </form>
