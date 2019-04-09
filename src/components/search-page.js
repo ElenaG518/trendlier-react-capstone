@@ -9,8 +9,7 @@ export class SearchPage extends React.Component {
 
     onSubmit(values) {
         console.log("values", values.category);
-        return this.props.dispatch(refreshAuthToken)
-        .then(() => this.props.history.push(`/results-page/${values.category}`));            
+        return this.props.history.push(`/results-page/${values.category}`);
     }
 
     render() {   
