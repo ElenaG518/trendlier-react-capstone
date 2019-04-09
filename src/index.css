@@ -187,10 +187,9 @@
         padding: 20px;
         background-color: #e2e6ec;
     }
-    
-    p:last-of-type {
+    /* p:last-of-type {
         padding-bottom: 100px;
-    }
+    } */
     
     .ReactModalPortal .modal-p {
         padding-bottom: 20px;

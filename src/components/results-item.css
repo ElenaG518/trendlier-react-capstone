@@ -48,12 +48,6 @@ article img {
     z-index: 1;
 }
 
-
-/* .border {
-    border: 1px solid lightgray;
-    background: #eaf0f28f;
-} */
-
 article button,
 article a,
 .add-form button,
@@ -75,12 +69,6 @@ article button {
     margin-top: 20px;
 }
 
-
-/* .add-button {
-    max-width: 520px;
-    margin: auto;
-} */
-
 article button:hover,
 article a:hover {
     background-color: #fff;
@@ -101,7 +89,8 @@ article a:hover {
     width: 100%;
 }
 
-.delete-item {
+.delete-item,
+.edit-button {
     display: block;
 }
 
