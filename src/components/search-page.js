@@ -1,4 +1,5 @@
 import React from 'react';
+import {refreshAuthToken} from '../actions/auth';
 import requiresLogin from './requires-login';
 import {Field, reduxForm, focus} from 'redux-form';
 import './search-page.css'
@@ -8,8 +9,8 @@ export class SearchPage extends React.Component {
 
     onSubmit(values) {
         console.log("values", values.category);
-        return this.props.history.push(`/results-page/${values.category}`);
-                
+        return this.props.dispatch(refreshAuthToken)
+        .then(() => this.props.history.push(`/results-page/${values.category}`));            
     }
 
     render() {   

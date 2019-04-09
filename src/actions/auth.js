@@ -37,12 +37,16 @@ export const authError = error => ({
 // the user data stored in the token
 const storeAuthInfo = (authToken, dispatch) => {
     const decodedToken = jwtDecode(authToken);
-    dispatch(setAuthToken(authToken));
+    // saves authToken to the store
+    dispatch(setAuthToken(authToken)); 
+    // saves user object to the store
     dispatch(authSuccess(decodedToken.user));
+    // saves authToken to localStorage
     saveAuthToken(authToken);
 };
 
 export const login = (username, password) => dispatch => {
+    // set loading to true
     dispatch(authRequest());
     return (
         fetch(`${API_BASE_URL}/auth/login`, {
@@ -80,6 +84,7 @@ export const login = (username, password) => dispatch => {
 };
 
 export const refreshAuthToken = () => (dispatch, getState) => {
+    // set loading to true while promise resolves
     dispatch(authRequest());
     const authToken = getState().auth.authToken;
     return fetch(`${API_BASE_URL}/auth/refresh`, {
