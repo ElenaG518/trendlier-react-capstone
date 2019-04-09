@@ -22,9 +22,8 @@ describe('<AddForm />', () => {
 
     it('Should switch to adding when the add note button is clicked', () => {
         const wrapper = shallow(<AddForm />);
-        wrapper.instance().setAdding(false);
+        // wrapper.instance().setAdding(false);
         wrapper.simulate('click');
-       
         expect(wrapper.state('adding')).toEqual(true);
     });
 

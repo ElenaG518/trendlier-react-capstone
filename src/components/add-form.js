@@ -1,13 +1,11 @@
 import React from 'react';
 
-
-
 export default class AddForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             adding: false
-        }
+        };
     }
 
     onSubmit(event) {
@@ -19,7 +17,7 @@ export default class AddForm extends React.Component {
             this.props.onAdd(text);
         }
         this.textInput.value = '';
-        this.setAdding(false);
+        // this.setAdding(false);
         console.log("state on submit", this.state.adding);
     }
 
