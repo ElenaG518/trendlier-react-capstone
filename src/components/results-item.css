@@ -75,11 +75,11 @@ article button {
     margin-top: 20px;
 }
 
-.add-button,
-.edit-button {
+
+/* .add-button {
     max-width: 520px;
     margin: auto;
-}
+} */
 
 article button:hover,
 article a:hover {
@@ -95,7 +95,8 @@ article a:hover {
 .add-item,
 .edit-form button,
 .edit-item,
-.delete-item {
+.delete-item,
+.edit-button {
     border-radius: 0;
     width: 100%;
 }
