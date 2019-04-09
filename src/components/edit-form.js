@@ -10,7 +10,6 @@ export default class EditForm extends React.Component {
 
     onSubmit(event) {
         event.preventDefault();
-        console.log("props", this.props);
         const text = this.textInput.value.trim();
         if (text && this.props.onEdit) {
             this.props.onEdit(text);
@@ -27,16 +26,18 @@ export default class EditForm extends React.Component {
 
     render() {
         if (!this.state.editing) {
+            console.log("state on button", this.state.editing);
             const text = `edit wishlist note`;
             return (
-                <div className="edit-button">
-                <button className="edit-item" onClick={() => this.setEditing(true)}>
+                <button 
+                    className="edit-button"
+                    onClick={() => this.setEditing(true)}>
                     {text}
                 </button>    
-                </div>
             );
         }
         const label = `Edit wishlist item note`;
+        console.log("state on addForm", this.state.editing);
         return (
             <form className="edit-form" onSubmit={(e) => this.onSubmit(e)}>
            
@@ -45,12 +46,9 @@ export default class EditForm extends React.Component {
                     id="notes"
                     rows="5" cols="40"
                     defaultValue = {`${this.props.notes}`}
-                    
                     ref={input => this.textInput = input}
                     aria-label={label}
-                />
-                
-            
+                />         
                 <button>submit</button>
                 <button type="button" onClick={() => this.setEditing(false)}>
                     cancel
