@@ -12,9 +12,10 @@ const store = createStore(
         form: formReducer,
         auth: authReducer,
         protectedData: protectedDataReducer,
-        trendlier: trendlierReducer
+        trendlier: trendlierReducer       
     }),
-    applyMiddleware(thunk)
+    applyMiddleware(thunk),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 // Hydrate the authToken from localStorage if it exist
