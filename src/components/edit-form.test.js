@@ -20,7 +20,7 @@ describe('<EditForm />', () => {
         expect(wrapper.hasClass('edit-form')).toEqual(true);
     });
 
-    it('Should switch to editing when the add button is clicked', () => {
+    it('Should switch to editing when the edit-button is clicked', () => {
         const wrapper = shallow(<EditForm />);
         wrapper.simulate('click');
         expect(wrapper.state('editing')).toEqual(true);
@@ -40,7 +40,10 @@ describe('<EditForm />', () => {
     it('Should not fire onEdit if the input is empty', () => {
         const callback = jest.fn();
         const wrapper = mount(<EditForm onEdit={callback} />);
+        const value = '';
         wrapper.instance().setEditing(true);
+        wrapper.update();
+        wrapper.find('textarea[type="text"]').instance().value = value;
         wrapper.simulate('submit');
         expect(callback).not.toHaveBeenCalled();
     });
